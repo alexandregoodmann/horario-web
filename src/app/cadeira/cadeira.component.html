@@ -1,0 +1,23 @@
+<clr-datagrid>
+
+  <clr-dg-column>
+    <clr-checkbox [clrChecked]="incluirAll" [clrInline]="true">
+      Código
+    </clr-checkbox>
+  </clr-dg-column>
+  <clr-dg-column>Cadeira</clr-dg-column>
+  <clr-dg-column>Prioridade</clr-dg-column>
+
+  <clr-dg-row *ngFor="let cadeira of cadeiras">
+    <clr-dg-cell>
+      <clr-checkbox [clrChecked]="cadeira.selecionado" [clrInline]="true">
+          {{cadeira.codigo}}
+      </clr-checkbox>
+    </clr-dg-cell>
+    <clr-dg-cell>{{cadeira.nome}}</clr-dg-cell>
+    <clr-dg-cell>
+      <clr-checkbox [clrChecked]="cadeira.importante" [clrInline]="true">
+      </clr-checkbox>
+    </clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>

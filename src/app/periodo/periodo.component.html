@@ -1,0 +1,10 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td *ngFor="let periodo of periodos">
+        <clr-checkbox [clrChecked]="periodo.selecionado" [clrInline]="true">
+          {{periodo.periodo}}
+        </clr-checkbox>
+      </td>
+  </tbody>
+</table>
