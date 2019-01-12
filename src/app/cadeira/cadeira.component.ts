@@ -19,14 +19,4 @@ export class CadeiraComponent implements OnInit {
 
 }
 
-const ELEMENT_DATA: Cadeira[] = [
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false },
-  { codigo: '4610T-02', nome: 'FERRAMENTAS COMPUTACIONAIS', selecionado: true, importante: false }
-];
+const ELEMENT_DATA: Cadeira[] = [];

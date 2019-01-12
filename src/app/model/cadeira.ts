@@ -1,6 +1,6 @@
 export class Cadeira {
     codigo: string;
-    nome: string;
-    selecionado: boolean;
-    importante: boolean;
+    descricao: string;
+    credito: number;
+    periodos: string[];
 }

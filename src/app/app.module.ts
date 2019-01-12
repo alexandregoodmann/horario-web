@@ -8,19 +8,20 @@ import { LercadeiraComponent } from './lercadeira/lercadeira.component';
 import { PeriodoComponent } from './periodo/periodo.component';
 import { CadeiraComponent } from './cadeira/cadeira.component';
 import { QuadroComponent } from './quadro/quadro.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     LercadeiraComponent,
     PeriodoComponent,
     CadeiraComponent,
-    QuadroComponent
+    QuadroComponent,
   ],
   imports: [
     BrowserModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
