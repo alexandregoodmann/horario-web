@@ -1,3 +1,12 @@
+<div *ngFor="let quadro of quadros">
+  {{quadro.periodos}}
+  <!--
+
+    <div *ngFor="let periodo of periodos">
+      {{periodo.quarta.codigo}}
+    </div>
+  -->
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -10,19 +19,24 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let aula of aulas">
-      <td>{{aula.periodo}}</td>
-      <td>{{aula.segunda}}</td>
-      <td>{{aula.terca}}</td>
-      <td>{{aula.quarta}}</td>
-      <td>{{aula.quinta}}</td>
-      <td>{{aula.sexta}}</td>
-    </tr>
+    <!--
+      <tr *ngFor="let aula of aulas">
+        <td>{{aula.periodo}}</td>
+        <td>{{aula.segunda}}</td>
+        <td>{{aula.terca}}</td>
+        <td>{{aula.quarta}}</td>
+        <td>{{aula.quinta}}</td>
+        <td>{{aula.sexta}}</td>
+      </tr>
+      <tr *ngFor="let periodo of periodos">
+        <td>{{quadro.periodo}}</td>
+      </tr>
+    -->
   </tbody>
   <tfoot>
     <tr>
       <td colspan="6" style="text-align: right">
-        <strong>24</strong> - Créditos
+        <strong></strong> - Créditos
       </td>
     </tr>
   </tfoot>

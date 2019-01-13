@@ -16,9 +16,4 @@ export class PeriodoComponent implements OnInit {
   }
 
 }
-const ELEMENT_DATA: Periodo[] = [
-  { periodo: 'HI', selecionado: true },
-  { periodo: 'JK', selecionado: true },
-  { periodo: 'LM', selecionado: true },
-  { periodo: 'NP', selecionado: true }
-];
+const ELEMENT_DATA: Periodo[] = [];

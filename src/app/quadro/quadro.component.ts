@@ -10,7 +10,7 @@ import { RestService } from '../service/rest.service';
 export class QuadroComponent implements OnInit {
 
   aulas: Quadro[] = ELEMENT_DATA;
-  quadros: any = [];
+  quadros: Quadro[];
 
   constructor(private rest: RestService) { }
 
@@ -20,7 +20,11 @@ export class QuadroComponent implements OnInit {
 
   getQuadros() {
     this.quadros = [];
-    this.rest.getQuadros().subscribe((data: {}) => this.quadros = data);
+    this.rest.getQuadros().subscribe((data: Array<Quadro>) => {
+      data.forEach(d => {
+        this.quadros.push(d);
+      })
+    });
     console.log('aff', this.quadros);
   }
 }

@@ -1,6 +1,6 @@
-import { Cadeira } from "./cadeira";
+import { Periodo } from "./periodo";
 
 export class Quadro {
-    data: Cadeira[][];
+    periodos: Periodo[];
     totalCredito: number;
 }
