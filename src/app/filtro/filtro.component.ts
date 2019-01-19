@@ -29,7 +29,7 @@ export class FiltroComponent implements OnInit {
   }
 
   atualizar() {
-    this.cadeiras.forEach(c => {
+    this.ignorarCadeiras.forEach(c => {
       console.log('-->>>' + c.descricao + '--->>>');
     });
   }
