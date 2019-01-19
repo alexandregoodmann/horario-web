@@ -9,7 +9,6 @@ import { RestService } from '../service/rest.service';
 })
 export class QuadroComponent implements OnInit {
 
-  aulas: Quadro[] = ELEMENT_DATA;
   quadros: Quadro[];
 
   constructor(private rest: RestService) { }
@@ -20,21 +19,8 @@ export class QuadroComponent implements OnInit {
 
   getQuadros() {
     this.quadros = [];
-    this.rest.getQuadros().subscribe((data: Array<Quadro>) => {
-      data.forEach(d => {
-        this.quadros.push(d);
-      })
+    this.rest.getQuadros().subscribe((quadros: Array<Quadro>) => {
+      this.quadros = quadros;
     });
-    console.log('aff', this.quadros);
   }
 }
-
-const ELEMENT_DATA: Quadro[] = [];
-
-/*
-const ELEMENT_DATA: Quadro[] = [
-  { periodo: 'HI', segunda: '4610T-02', terca: '4610T-02', quarta: '4610T-02', quinta: '4610T-02', sexta: '4610T-02', sabado: '4610T-02' },
-  { periodo: 'HI', segunda: '4610T-02', terca: '4610T-02', quarta: '4610T-02', quinta: '4610T-02', sexta: '4610T-02', sabado: '4610T-02' },
-  { periodo: 'HI', segunda: '4610T-02', terca: '4610T-02', quarta: '4610T-02', quinta: '4610T-02', sexta: '4610T-02', sabado: '4610T-02' }
-];
-*/
