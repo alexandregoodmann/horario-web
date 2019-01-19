@@ -8,26 +8,16 @@
     <clr-tabs style="width: 100%">
 
       <clr-tab>
-        <button clrTabLink id="link1">Ler Arquivo</button>
-        <clr-tab-content id="content1" *clrIfActive>
-          <div class="content-area">
-            <app-lercadeira></app-lercadeira>
-          </div>
-        </clr-tab-content>
-      </clr-tab>
-
-      <clr-tab>
         <button clrTabLink>Montar Quadros</button>
         <clr-tab-content *clrIfActive="true">
 
           <div class="clr-row">
-            <div class="clr-col-5">
+            <div class="clr-col-3">
               <div style="padding: 0 0 0 15px">
-                <app-periodo></app-periodo>
-                <app-cadeira></app-cadeira>
+                <app-filtro></app-filtro>
               </div>
             </div>
-            <div class="clr-col">
+            <div class="clr-col-9">
               <div style="padding: 0 15px 0 0">
                 <app-quadro></app-quadro>
               </div>

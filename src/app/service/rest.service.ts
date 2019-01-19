@@ -11,7 +11,7 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
-  private endpoint = 'http://localhost:8080/quadros';
+  private endpoint = 'http://localhost:8080';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -24,7 +24,12 @@ export class RestService {
   }
 
   getQuadros(): Observable<any> {
-    return this.http.get(this.endpoint).pipe(
+    return this.http.get(this.endpoint + '/quadros').pipe(
+      map(this.extractData));
+  }
+
+  getCadeiras(): Observable<any> {
+    return this.http.get(this.endpoint + '/cadeiras').pipe(
       map(this.extractData));
   }
 

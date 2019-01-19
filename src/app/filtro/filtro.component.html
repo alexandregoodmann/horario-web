@@ -1,0 +1,17 @@
+<button (click)="atualizar()" class="btn btn-primary">Atualizar</button>
+
+<div *ngFor="let cadeira of cadeiras">
+  <div class="card card-block">
+    
+    <strong>{{cadeira.codigo}}</strong>
+    
+    <div style="float: right;">
+        <input type="checkbox" clrCheckbox (click)="ignorarCadeira(cadeira)"/>
+        <label>Ignorar</label>
+    </div>
+    
+    <p class="card-text">
+      {{cadeira.descricao}}
+    </p>
+  </div>
+</div>
