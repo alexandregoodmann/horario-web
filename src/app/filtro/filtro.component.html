@@ -1,17 +1,37 @@
-<button (click)="atualizar()" class="btn btn-primary">Atualizar</button>
-
-<div *ngFor="let cadeira of cadeiras">
-  <div class="card card-block">
-    
-    <strong>{{cadeira.codigo}}</strong>
-    
-    <div style="float: right;">
-        <input type="checkbox" clrCheckbox (click)="ignorarCadeira(cadeira)"/>
-        <label>Ignorar</label>
+<div class="clr-col-12 card">
+  <div class="card-header">
+    Header
+  </div>
+  <div class="card-block">
+    <div *ngFor="let periodo of periodos">
+      <label class="checkbox-linha" (onclick)="clickCheckBox('vai')" >
+        <input type="checkbox" name="periodo.ignorar" value="periodo.ignorar" 
+        [checked]="periodo.ignorar" />
+        <strong>{{periodo.periodo}}</strong>
+      </label>
     </div>
-    
-    <p class="card-text">
-      {{cadeira.descricao}}
-    </p>
+  </div>
+  <div class="card-footer">
+    <button (click)="atualizar()" class="btn btn-primary">Atualizar</button>
   </div>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>CodCred</th>
+      <th>Descrição</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cadeira of cadeiras">
+      <td><strong>{{cadeira.codigo}}</strong></td>
+      <td style="text-align: left">{{cadeira.descricao}}</td>
+      <td>
+        <input type="checkbox" clrCheckbox (click)="ignorarCadeira(cadeira)" />
+        <label>Ignorar</label>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -2,3 +2,8 @@
 .check-inline{
     margin: 0 30px 0 13px;
 }
+
+.checkbox-linha{
+    float: left;
+    margin-right: 20px;
+}

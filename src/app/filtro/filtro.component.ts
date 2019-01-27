@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadeira } from '../model/cadeira';
 import { RestService } from '../service/rest.service';
+import { Periodo } from '../model/periodo';
 
 @Component({
   selector: 'app-filtro',
@@ -9,13 +10,26 @@ import { RestService } from '../service/rest.service';
 })
 export class FiltroComponent implements OnInit {
 
-  cadeiras: Cadeira[];
+  private vetPeriodos: string[] = ['AB', 'CD', 'FG', 'HI', 'JK', 'LM', 'NP'];
+  periodos: Periodo[] = new Array<Periodo>();
+
+  cadeiras: Cadeira[] = new Array<Cadeira>();
   ignorarCadeiras: Cadeira[] = new Array();
 
   constructor(private rest: RestService) { }
 
   ngOnInit() {
-    this.getCadeiras();
+    this.getDisciplinas();
+    this.vetPeriodos.forEach(d => {
+      let per = new Periodo();
+      per.periodo = d;
+      per.ignorar = false;
+      this.periodos.push(per);
+    });
+  }
+
+  clickCheckBox(valor: string){
+    console.log('====>>>' + valor);
   }
 
   ignorarCadeira(cadeira: Cadeira): void {
@@ -29,15 +43,15 @@ export class FiltroComponent implements OnInit {
   }
 
   atualizar() {
-    this.ignorarCadeiras.forEach(c => {
-      console.log('-->>>' + c.descricao + '--->>>');
+    this.periodos.forEach(p=>{
+      console.log(p.periodo+'====>>>' + p.ignorar);
     });
   }
 
-  getCadeiras() {
-    this.rest.getCadeiras().subscribe((data: Array<Cadeira>) => {
+  getDisciplinas() {
+    this.rest.getDisciplinas().subscribe((data: Array<Cadeira>) => {
       this.cadeiras = data;
     });
   }
- 
+
 }

@@ -51,6 +51,11 @@ export class RestService {
       map(this.extractData));
   }
 
+  getDisciplinas(): Observable<any> {
+    return this.http.get(this.endpoint + '/disciplinas').pipe(
+      map(this.extractData));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
