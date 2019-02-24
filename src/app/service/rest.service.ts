@@ -1,9 +1,9 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
-import { Quadro } from '../model/quadro';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Filtro } from '../model/filtro';
+import { Quadro } from '../model/quadro';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,6 @@ import { Filtro } from '../model/filtro';
 export class RestService {
 
   constructor(private http: HttpClient) { }
-
   private endpoint = 'http://localhost:8080';
 
   private httpOptions = {
@@ -25,18 +24,19 @@ export class RestService {
     return body || {};
   }
 
-  /*
-  getQuadros(): Observable<any> {
-    this.http.get
-    return this.http.get(this.endpoint + '/quadros', {, this.httpOptions }).pipe(
-      map(this.extractData), catchError(this.handleError<any>('getQuadros()'))
-    );
-  }*/
+  private quadrosSource = new BehaviorSubject<Array<Quadro>>(new Array<Quadro>());
+  quadros = this.quadrosSource.asObservable();
+
+  setQuadroSource(quadros: Quadro[]) {
+    this.quadrosSource.next(quadros);
+  }
+
+  getQuadros2(filtro: Filtro) {
+    return this.http.post(this.endpoint + '/quadros', filtro);
+  }
 
   getQuadros(filtro: Filtro): Observable<Quadro[]> {
 
-    console.log('--->>>' + JSON.stringify(filtro));
-    
     const options = filtro ?
       { params: new HttpParams().set('filtro', JSON.stringify(filtro)) } : {};
 
@@ -48,11 +48,6 @@ export class RestService {
 
   getCadeiras(): Observable<any> {
     return this.http.get(this.endpoint + '/cadeiras').pipe(
-      map(this.extractData));
-  }
-
-  getDisciplinas(): Observable<any> {
-    return this.http.get(this.endpoint + '/disciplinas').pipe(
       map(this.extractData));
   }
 

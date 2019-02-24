@@ -4,9 +4,8 @@
   </div>
   <div class="card-block">
     <div *ngFor="let periodo of periodos">
-      <label class="checkbox-linha" (onclick)="clickCheckBox('vai')" >
-        <input type="checkbox" name="periodo.ignorar" value="periodo.ignorar" 
-        [checked]="periodo.ignorar" />
+      <label class="checkbox-linha">
+        <input type="checkbox" data-md-icheck (change)="checkPeriodo($event, periodo)" />
         <strong>{{periodo.periodo}}</strong>
       </label>
     </div>
@@ -29,8 +28,10 @@
       <td><strong>{{cadeira.codigo}}</strong></td>
       <td style="text-align: left">{{cadeira.descricao}}</td>
       <td>
-        <input type="checkbox" clrCheckbox (click)="ignorarCadeira(cadeira)" />
-        <label>Ignorar</label>
+        <label class="checkbox-linha">
+          <input type="checkbox" data-md-icheck (change)="checkCadeira($event, cadeira)" />
+          Ignorar
+        </label>
       </td>
     </tr>
   </tbody>

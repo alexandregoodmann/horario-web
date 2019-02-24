@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quadro } from '../model/quadro';
 import { RestService } from '../service/rest.service';
-import { Filtro } from '../model/filtro';
 
 @Component({
   selector: 'app-quadro',
@@ -15,17 +14,7 @@ export class QuadroComponent implements OnInit {
   constructor(private rest: RestService) { }
 
   ngOnInit() {
-    this.getQuadros();
+    this.rest.quadros.subscribe(data => this.quadros = data);
   }
 
-  getQuadros() {
-
-    let filtro = new Filtro();
-    filtro.ignorarCadeiras = ['a', 'b'];
-    filtro.ignorarPeriodos = ['c', 'd'];
-
-    this.rest.getQuadros(filtro).subscribe((quadros: Array<Quadro>) => {
-      this.quadros = quadros;
-    });
-  }
 }

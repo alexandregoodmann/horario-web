@@ -1,4 +1,4 @@
 export class Filtro {
-    ignorarPeriodos: string[];
-    ignorarCadeiras: string[];
+    ignorarPeriodos: string[] = [];
+    ignorarCadeiras: string[] = [];
 }

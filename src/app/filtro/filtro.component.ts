@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadeira } from '../model/cadeira';
-import { RestService } from '../service/rest.service';
+import { Filtro } from '../model/filtro';
 import { Periodo } from '../model/periodo';
+import { Quadro } from '../model/quadro';
+import { RestService } from '../service/rest.service';
 
 @Component({
   selector: 'app-filtro',
@@ -11,47 +13,65 @@ import { Periodo } from '../model/periodo';
 export class FiltroComponent implements OnInit {
 
   private vetPeriodos: string[] = ['AB', 'CD', 'FG', 'HI', 'JK', 'LM', 'NP'];
-  periodos: Periodo[] = new Array<Periodo>();
-
-  cadeiras: Cadeira[] = new Array<Cadeira>();
-  ignorarCadeiras: Cadeira[] = new Array();
+  private periodos: Periodo[] = new Array<Periodo>();
+  private cadeiras: Cadeira[] = new Array<Cadeira>();
 
   constructor(private rest: RestService) { }
 
+  checkPeriodo(e, periodo: Periodo) {
+    periodo.ignorar = e.target.checked;
+  }
+
+  checkCadeira(e, cadeira: Cadeira) {
+    cadeira.ignorar = e.target.checked;
+  }
+
+  atualizar() {
+
+    let filtro = new Filtro();
+    this.cadeiras.filter(o => o.ignorar === true).forEach(cadeira => {
+      filtro.ignorarCadeiras.push(cadeira.codigo);
+    });
+
+    this.periodos.filter(o => o.ignorar === true).forEach(periodo => {
+      filtro.ignorarPeriodos.push(periodo.periodo);
+    });
+
+    this.rest.getQuadros2(filtro).subscribe((quadros: Array<Quadro>) => {
+      console.log(quadros);
+
+      this.rest.setQuadroSource(quadros);
+    });
+
+  }
+
   ngOnInit() {
-    this.getDisciplinas();
+
+    //Monta lista de periodos
     this.vetPeriodos.forEach(d => {
       let per = new Periodo();
       per.periodo = d;
       per.ignorar = false;
       this.periodos.push(per);
     });
-  }
 
-  clickCheckBox(valor: string){
-    console.log('====>>>' + valor);
-  }
-
-  ignorarCadeira(cadeira: Cadeira): void {
-    for (let i = 0; i < this.ignorarCadeiras.length; i++) {
-      if (cadeira.codigo === this.ignorarCadeiras[i].codigo) {
-        this.ignorarCadeiras.splice(i, 1);
-        return;
-      }
-    }
-    this.ignorarCadeiras.push(cadeira);
-  }
-
-  atualizar() {
-    this.periodos.forEach(p=>{
-      console.log(p.periodo+'====>>>' + p.ignorar);
+    //pega lista das disciplinas
+    let mapa = new Map<String, Cadeira>();
+    this.rest.getCadeiras().subscribe((data: Array<Cadeira>) => {
+      data.forEach(cadeira => {
+        mapa.set(cadeira.codigo, cadeira);
+      });
+      mapa.forEach(m => {
+        this.cadeiras.push(m);
+      });
     });
-  }
 
-  getDisciplinas() {
-    this.rest.getDisciplinas().subscribe((data: Array<Cadeira>) => {
-      this.cadeiras = data;
+    //monta a lista de quadros
+    let filtro = new Filtro();
+    this.rest.getQuadros2(filtro).subscribe((quadros: Array<Quadro>) => {
+      this.rest.setQuadroSource(quadros);
     });
+
   }
 
 }
