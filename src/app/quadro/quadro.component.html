@@ -1,4 +1,12 @@
 <table class="table" *ngFor="let quadro of quadros">
+  <colgroup>
+    <col width="5%">
+    <col width="19%">
+    <col width="19%">
+    <col width="19%">
+    <col width="19%">
+    <col width="19%">
+  </colgroup>
   <thead>
     <tr>
       <th>Período</th>
@@ -7,18 +15,93 @@
       <th>Quarta</th>
       <th>Quinta</th>
       <th>Sexta</th>
-      <th>Sábado</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let periodo of quadro.periodos">
+
+      <!-- PERIODO -->
       <td>{{periodo.periodo}}</td>
-      <td><strong>{{periodo.segunda.codigo}}</strong><br>{{periodo.segunda.descricao}}</td>
-      <td><strong>{{periodo.terca.codigo}}</strong><br>{{periodo.terca.descricao}}</td>
-      <td><strong>{{periodo.quarta.codigo}}</strong><br>{{periodo.quarta.descricao}}</td>
-      <td><strong>{{periodo.quinta.codigo}}</strong><br>{{periodo.quinta.descricao}}</td>
-      <td><strong>{{periodo.sexta.codigo}}</strong><br>{{periodo.sexta.descricao}}</td>
-      <td><strong>{{periodo.sabado.codigo}}</strong><br>{{periodo.sabado.descricao}}</td>
+
+      <!-- SEGUNDA -->
+      <td>
+        <strong>{{periodo.segunda.codigo}}</strong>
+        <clr-signpost (click)="showSugestoes(2, periodo)">
+          <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
+            <ul style="text-align: left">
+              <li *ngFor="let sug of sugestoes">
+                <strong>{{sug.codigo}}</strong>
+                {{sug.descricao}}
+              </li>
+            </ul>
+          </clr-signpost-content>
+        </clr-signpost>
+        <br>{{periodo.segunda.descricao}}
+      </td>
+
+      <!-- terca -->
+      <td>
+        <strong>{{periodo.terca.codigo}}</strong>
+        <clr-signpost (click)="showSugestoes(3, periodo)">
+            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
+            <ul style="text-align: left">
+              <li *ngFor="let sug of sugestoes">
+                <strong>{{sug.codigo}}</strong>
+                {{sug.descricao}}
+              </li>
+            </ul>
+          </clr-signpost-content>
+        </clr-signpost>
+        <br>{{periodo.terca.descricao}}
+      </td>
+
+      <!-- quarta -->
+      <td>
+        <strong>{{periodo.quarta.codigo}}</strong>
+        <clr-signpost (click)="showSugestoes(4, periodo)">
+            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
+            <ul style="text-align: left">
+              <li *ngFor="let sug of sugestoes">
+                <strong>{{sug.codigo}}</strong>
+                {{sug.descricao}}
+              </li>
+            </ul>
+          </clr-signpost-content>
+        </clr-signpost>
+        <br>{{periodo.quarta.descricao}}
+      </td>
+
+      <!-- quinta -->
+      <td>
+        <strong>{{periodo.quinta.codigo}}</strong>
+        <clr-signpost (click)="showSugestoes(5, periodo)">
+            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
+            <ul style="text-align: left">
+              <li *ngFor="let sug of sugestoes">
+                <strong>{{sug.codigo}}</strong>
+                {{sug.descricao}}
+              </li>
+            </ul>
+          </clr-signpost-content>
+        </clr-signpost>
+        <br>{{periodo.quinta.descricao}}
+      </td>
+
+      <!-- sexta -->
+      <td>
+        <strong>{{periodo.sexta.codigo}}</strong>
+        <clr-signpost (click)="showSugestoes(6, periodo)">
+            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
+            <ul style="text-align: left">
+              <li *ngFor="let sug of sugestoes">
+                <strong>{{sug.codigo}}</strong>
+                {{sug.descricao}}
+              </li>
+            </ul>
+          </clr-signpost-content>
+        </clr-signpost>
+        <br>{{periodo.sexta.descricao}}
+      </td>
     </tr>
   </tbody>
   <tfoot>

@@ -31,19 +31,8 @@ export class RestService {
     this.quadrosSource.next(quadros);
   }
 
-  getQuadros2(filtro: Filtro) {
+  getQuadros(filtro: Filtro) {
     return this.http.post(this.endpoint + '/quadros', filtro);
-  }
-
-  getQuadros(filtro: Filtro): Observable<Quadro[]> {
-
-    const options = filtro ?
-      { params: new HttpParams().set('filtro', JSON.stringify(filtro)) } : {};
-
-    return this.http.get<Quadro[]>(this.endpoint + '/quadros', options)
-      .pipe(
-        catchError(this.handleError<Quadro[]>('getQuadros', []))
-      );
   }
 
   getCadeiras(): Observable<any> {

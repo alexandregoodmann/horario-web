@@ -20,10 +20,12 @@ export class FiltroComponent implements OnInit {
 
   checkPeriodo(e, periodo: Periodo) {
     periodo.ignorar = e.target.checked;
+    this.atualizar();
   }
 
   checkCadeira(e, cadeira: Cadeira) {
     cadeira.ignorar = e.target.checked;
+    this.atualizar();
   }
 
   atualizar() {
@@ -37,7 +39,7 @@ export class FiltroComponent implements OnInit {
       filtro.ignorarPeriodos.push(periodo.periodo);
     });
 
-    this.rest.getQuadros2(filtro).subscribe((quadros: Array<Quadro>) => {
+    this.rest.getQuadros(filtro).subscribe((quadros: Array<Quadro>) => {
       console.log(quadros);
 
       this.rest.setQuadroSource(quadros);
@@ -68,7 +70,7 @@ export class FiltroComponent implements OnInit {
 
     //monta a lista de quadros
     let filtro = new Filtro();
-    this.rest.getQuadros2(filtro).subscribe((quadros: Array<Quadro>) => {
+    this.rest.getQuadros(filtro).subscribe((quadros: Array<Quadro>) => {
       this.rest.setQuadroSource(quadros);
     });
 

@@ -1,8 +1,5 @@
-<div class="clr-col-12 card">
-  <div class="card-header">
-    Header
-  </div>
-  <div class="card-block">
+<div class="card">
+  <div class="card-block" style="height: 45px;">
     <div *ngFor="let periodo of periodos">
       <label class="checkbox-linha">
         <input type="checkbox" data-md-icheck (change)="checkPeriodo($event, periodo)" />
@@ -10,27 +7,28 @@
       </label>
     </div>
   </div>
-  <div class="card-footer">
-    <button (click)="atualizar()" class="btn btn-primary">Atualizar</button>
-  </div>
 </div>
 
 <table class="table">
+  <colgroup>
+    <col width="25%">
+    <col width="70%">
+    <col width="5%">
+  </colgroup>
   <thead>
     <tr>
       <th>CodCred</th>
       <th>Descrição</th>
-      <th>Ação</th>
+      <th>Ignorar</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let cadeira of cadeiras">
       <td><strong>{{cadeira.codigo}}</strong></td>
       <td style="text-align: left">{{cadeira.descricao}}</td>
-      <td>
+      <td style="text-align: center">
         <label class="checkbox-linha">
           <input type="checkbox" data-md-icheck (change)="checkCadeira($event, cadeira)" />
-          Ignorar
         </label>
       </td>
     </tr>
