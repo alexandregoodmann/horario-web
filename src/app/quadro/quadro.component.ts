@@ -19,8 +19,8 @@ export class QuadroComponent implements OnInit {
     private quadroService: QuadroService) { }
 
   ngOnInit() {
-    this.quadroService.create();
-    console.log(this.quadroService.montarQuadros());
+    this.quadros = this.quadroService.montarQuadros();
+    console.log(this.quadros);
   }
 
   showSugestoes(dia: number) {

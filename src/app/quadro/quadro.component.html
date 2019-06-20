@@ -15,93 +15,37 @@
       <th>Quarta</th>
       <th>Quinta</th>
       <th>Sexta</th>
+      <th>Sábado</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let periodo of quadro.periodos">
+    <tr *ngFor="let periodo of quadro.quadro">
 
-      <!-- PERIODO -->
-      <td>{{periodo.periodo}}</td>
-
-      <!-- SEGUNDA -->
-      <td>
-        <strong>{{periodo.segunda.codigo}}</strong>
-        <clr-signpost (click)="showSugestoes(2, periodo)">
-          <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
-            <ul style="text-align: left">
-              <li *ngFor="let sug of sugestoes">
-                <strong>{{sug.codigo}}</strong>
-                {{sug.descricao}}
-              </li>
-            </ul>
-          </clr-signpost-content>
-        </clr-signpost>
-        <br>{{periodo.segunda.descricao}}
-      </td>
-
-      <!-- terca -->
-      <td>
-        <strong>{{periodo.terca.codigo}}</strong>
-        <clr-signpost (click)="showSugestoes(3, periodo)">
+      <td *ngFor="let dia of periodo; let i = index">
+        
+        <!-- PERÍODO -->
+        <div *ngIf="i === 0">
+          
+        </div>
+        
+        <!-- DIAS -->
+        <div *ngIf="i > 0">
+          <strong>{{dia.codigo}}</strong>
+          <clr-signpost (click)="showSugestoes(2, periodo)">
             <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
-            <ul style="text-align: left">
-              <li *ngFor="let sug of sugestoes">
-                <strong>{{sug.codigo}}</strong>
-                {{sug.descricao}}
-              </li>
-            </ul>
-          </clr-signpost-content>
-        </clr-signpost>
-        <br>{{periodo.terca.descricao}}
+              <ul style="text-align: left">
+                <li *ngFor="let sug of sugestoes">
+                  <strong>{{sug.codigo}}</strong>
+                  {{sug.descricao}}
+                </li>
+              </ul>
+            </clr-signpost-content>
+          </clr-signpost>
+          <br>{{dia.descricao}}
+        </div>
+
       </td>
 
-      <!-- quarta -->
-      <td>
-        <strong>{{periodo.quarta.codigo}}</strong>
-        <clr-signpost (click)="showSugestoes(4, periodo)">
-            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
-            <ul style="text-align: left">
-              <li *ngFor="let sug of sugestoes">
-                <strong>{{sug.codigo}}</strong>
-                {{sug.descricao}}
-              </li>
-            </ul>
-          </clr-signpost-content>
-        </clr-signpost>
-        <br>{{periodo.quarta.descricao}}
-      </td>
-
-      <!-- quinta -->
-      <td>
-        <strong>{{periodo.quinta.codigo}}</strong>
-        <clr-signpost (click)="showSugestoes(5, periodo)">
-            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
-            <ul style="text-align: left">
-              <li *ngFor="let sug of sugestoes">
-                <strong>{{sug.codigo}}</strong>
-                {{sug.descricao}}
-              </li>
-            </ul>
-          </clr-signpost-content>
-        </clr-signpost>
-        <br>{{periodo.quinta.descricao}}
-      </td>
-
-      <!-- sexta -->
-      <td>
-        <strong>{{periodo.sexta.codigo}}</strong>
-        <clr-signpost (click)="showSugestoes(6, periodo)">
-            <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-left'">
-            <ul style="text-align: left">
-              <li *ngFor="let sug of sugestoes">
-                <strong>{{sug.codigo}}</strong>
-                {{sug.descricao}}
-              </li>
-            </ul>
-          </clr-signpost-content>
-        </clr-signpost>
-        <br>{{periodo.sexta.descricao}}
-      </td>
     </tr>
   </tbody>
   <tfoot>
