@@ -8,7 +8,7 @@ import { Quadro } from '../model/quadro';
 })
 export class QuadroService {
 
-  destino: Map<String, Cadeira> = new Map<String, Cadeira>();
+  private quadro: Map<String, Cadeira> = new Map<String, Cadeira>();
 
   constructor() { }
 
@@ -17,10 +17,12 @@ export class QuadroService {
     this.montarListaDestino();
     let q = this.criarQuadroVazio();
     let quadros: Quadro[] = [];
-    
-    this.destino.forEach((c, h) => {
-      let vet = this.parseHorario(h);
-      q.quadro[vet[0]][vet[1]] = c;
+
+    this.quadro.forEach((c, h) => {
+      c.horario.forEach(h => {
+        let vet = this.parseHorario(h);
+        q.quadro[vet[0]][vet[1]] = c;
+      })
     });
 
     quadros.push(q);
@@ -30,26 +32,40 @@ export class QuadroService {
 
   private montarListaDestino() {
 
-    let o = new Disciplina();
+    let disciplina = new Disciplina();
 
-    o.disciplinas.forEach(d => {
-      d.turmas.forEach(t => {
-        t.horario.forEach(h => {
-          if (this.destino.get(h) === undefined) {
-            let c = this.parseCadeira(d, t, h);
-            this.destino.set(h, c);
+    disciplina.disciplinas.forEach(d => {
+      if (this.quadro.get(d.sgCodicred) === undefined) {
+        for (let i = 0; i < d.turmas.length; i++) {
+          if (this.contemHorarioLivre(d.turmas[i].horario)) {
+            let c = this.parseCadeira(d, d.turmas[i]);
+            this.quadro.set(d.sgCodicred, c);
           }
-        });
-      });
+        }
+      }
     });
 
   }
 
-  private parseCadeira(d: any, t: any, h: any): Cadeira {
+  private contemHorarioLivre(h: string[]): boolean {
+    this.quadro.forEach((v, k) => {
+      for (let i = 0; i < v.horario.length; i++) {
+        for (let j = 0; j < h.length; j++) {
+          if (v.horario[i] === h[j]) {
+            return false;
+          }
+        }
+      }
+    });
+    return true;
+  }
+
+  private parseCadeira(d: any, t: any): Cadeira {
     let c = new Cadeira();
     c.codigo = d.sgCodicred;
     c.credito = Number.parseInt(c.codigo.substring(c.codigo.length - 2, c.codigo.length));
     c.descricao = d.nmNome;
+    c.horario = t.horario;
     return c;
   }
 
