@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadeira } from '../model/cadeira';
-import { Periodo } from '../model/periodo';
 import { Quadro } from '../model/quadro';
+import { QuadroService } from '../service/quadro.service';
 import { RestService } from '../service/rest.service';
 
 @Component({
@@ -14,17 +14,21 @@ export class QuadroComponent implements OnInit {
   private quadros: Quadro[] = [];
   private sugestoes: Cadeira[] = [];
 
-  constructor(private rest: RestService) { }
+  constructor(
+    private rest: RestService,
+    private quadroService: QuadroService) { }
 
   ngOnInit() {
-    this.rest.quadros.subscribe(data => this.quadros = data);
+    this.quadroService.create();
+    console.log(this.quadroService.montarQuadros());
   }
 
-  showSugestoes(dia: number, periodo: Periodo) {
+  showSugestoes(dia: number) {
 
     let cadeiras = new Map<string, Cadeira>();
     this.sugestoes = new Array<Cadeira>();
 
+    /*
     this.rest.quadros.subscribe(data => {
       data.forEach(quadro => {
         let periodos = quadro.periodos.filter(o => o.periodo === periodo.periodo);
@@ -61,6 +65,7 @@ export class QuadroComponent implements OnInit {
         });
       })
     });
+*/
 
     cadeiras.forEach(data => {
       this.sugestoes.push(data);

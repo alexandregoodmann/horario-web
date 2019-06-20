@@ -1,6 +1,6 @@
-import { Periodo } from "./periodo";
+import { Cadeira } from "./cadeira";
 
 export class Quadro {
-    periodos: Periodo[];
+    aulas: Cadeira[][] = new Array<Array<Cadeira>>();
     totalCredito: number;
 }
