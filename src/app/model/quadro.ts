@@ -1,6 +1,50 @@
-import { Periodo } from "./periodo";
+import { TurmaDTO } from "./turma";
 
 export class Quadro {
-    periodos: Periodo[];
+
+    disciplinas: Map<String, TurmaDTO> = new Map<String, TurmaDTO>();
+    quadro: Array<Array<any>> = new Array<Array<any>>();
     totalCredito: number;
+
+    constructor() {
+        this.criaQuadro();
+    }
+
+    setAula(per: string, turma: TurmaDTO): void {
+        let vet = this.parsePeriodo(per);
+        this.quadro[vet[0]][vet[1]] = turma;
+    }
+
+    getAula(per: string): TurmaDTO {
+        let vet = this.parsePeriodo(per);
+        let cell = this.quadro[vet[0]][vet[1]];
+        if (cell === '') {
+            return undefined;
+        } else {
+            return cell;
+        }
+    }
+
+    private parsePeriodo(periodo: string): number[] {
+        let i = PERIODOS.indexOf(periodo.substring(1));
+        let j = Number.parseInt(periodo.substring(0, 1)) - 1;
+        return [i, j];
+    }
+
+    private criaQuadro(): void {
+        for (let i = 0; i < PERIODOS.length; i++) {
+            let linha = new Array<any>();
+            for (let j = 0; j < 7; j++) {
+                if (j === 0) {
+                    linha.push(PERIODOS[i]);
+                } else {
+                    linha.push('');
+                }
+            }
+            this.quadro.push(linha);
+        }
+    }
+
 }
+
+const PERIODOS = ['A', 'B', 'C', 'D', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
