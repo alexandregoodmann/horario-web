@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>Período</th>
-      <th>Segunda</th> 
+      <th>Segunda</th>
       <th>Terça</th>
       <th>Quarta</th>
       <th>Quinta</th>
@@ -13,8 +13,8 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let linhas of quadro.quadro">
-      <td *ngFor="let aula of linhas; let i = index">
+    <tr *ngFor="let linha of quadro.quadro">
+      <td *ngFor="let aula of linha; let i = index">
         <span *ngIf="i === 0">{{aula[0]}}</span>
         <div *ngIf="i > 0">
           <strong>{{aula.sgCodCred}}</strong>

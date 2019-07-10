@@ -45,6 +45,14 @@ export class Quadro {
         }
     }
 
+    calcularTotal() {
+        let total: number = 0;
+        this.disciplinas.forEach((v, k) => {
+            total = total + Number.parseInt(k.substring(k.length - 2));
+        });
+        this.totalCredito = total;
+    }
+
 }
 
 const PERIODOS = ['A', 'B', 'C', 'D', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];

@@ -10,7 +10,7 @@ export class GradeService {
   private origem: TurmaDTO[] = [];
 
   private criaOrigem(): void {
-    let lista = Array.from(DADOS);
+    let lista = [...DADOS];
     lista.forEach(d => {
       d.turmas.forEach(t => {
         let turma = new TurmaDTO();
@@ -57,6 +57,8 @@ export class GradeService {
       this.origem.splice(r, 1);
     });
 
+    quadro.calcularTotal();
+
     return quadro;
   }
 
@@ -76,14 +78,14 @@ const DADOS = [
   {
     "retorno": null,
     "mensagem": null,
-    "cdDisciplina": 10630,
-    "nmNome": "Eletrônica Básica - Em",
-    "sgCodicred": "4453U-02",
+    "cdDisciplina": 26927,
+    "nmNome": "Laboratório - Criatividade E Design",
+    "sgCodicred": "254ER-04",
     "sgCodi": null,
     "sgCred": null,
-    "cdNivel": 6,
+    "cdNivel": 0,
     "tipoDisciplina": null,
-    "idTipoDisciplina": 1,
+    "idTipoDisciplina": 3,
     "nrCreditosPre": 0,
     "stStatus": null,
     "txCursado": null,
@@ -91,41 +93,40 @@ const DADOS = [
     "txCorequisito": null,
     "cdCoRequisito": null,
     "disciplinasPreRequisito": "",
-    "disciplinasSubstitutas": "\n4452G-04 - Eletrônica Analógica - Ec",
-    "disciplinasCoRequisitos": "\n42187-04 - Eletromagnetismo",
+    "disciplinasSubstitutas": "",
+    "disciplinasCoRequisitos": "",
     "disciplinasRequisitosEspeciais": "",
-    "tipoRequisito": [
-      "COR",
-      "SUB"
-    ],
+    "tipoRequisito": [],
     "turmas": [
       {
-        "cdDisciplina": 10630,
+        "cdDisciplina": 26927,
         "idTurmaAluno": 0,
-        "idTurma": 493,
+        "idTurma": 2286,
         "stMatricula": null,
-        "codigo": 480,
-        "txHorario": "2NP ",
+        "codigo": 670,
+        "txHorario": "4ABCD ",
         "horario": [
-          "2N",
-          "2P"
+          "4A",
+          "4B",
+          "4C",
+          "4D"
         ],
         "tipo": "PRES",
         "txDescricaoTipo": "Presencial",
         "txTurmaCurriculo": [
-          "4452-ENGENHARIA MECÂNICA"
+          "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
         ],
-        "txHorarioExtenso": "Segunda-feira, das 21:15 às 22:45",
-        "vagas": 60,
-        "vagasVeterano": 60,
+        "txHorarioExtenso": "Quarta-feira, das 08:00 às 11:30",
+        "vagas": 0,
+        "vagasVeterano": 30,
         "vagasBixo": 0,
         "vagasExtra": 0,
         "vagasCentral": 0,
         "incluido": null,
-        "nrPredio": "30D",
-        "nrSala": "307",
+        "nrPredio": "15A",
+        "nrSala": "206",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "E"
       }
     ]
   },
@@ -185,6 +186,61 @@ const DADOS = [
         "nrSala": "119",
         "professores": null,
         "tpVaga": "V"
+      }
+    ]
+  },
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 26898,
+    "nmNome": "Laboratório - O Empreendedor",
+    "sgCodicred": "254EN-04",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 0,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 3,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": null,
+    "disciplinasPreRequisito": "",
+    "disciplinasSubstitutas": "",
+    "disciplinasCoRequisitos": "",
+    "disciplinasRequisitosEspeciais": "",
+    "tipoRequisito": [],
+    "turmas": [
+      {
+        "cdDisciplina": 26898,
+        "idTurmaAluno": 0,
+        "idTurma": 2469,
+        "stMatricula": null,
+        "codigo": 670,
+        "txHorario": "5ABCD ",
+        "horario": [
+          "5A",
+          "5B",
+          "5C",
+          "5D"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
+        ],
+        "txHorarioExtenso": "Quinta-feira, das 08:00 às 11:30",
+        "vagas": 0,
+        "vagasVeterano": 30,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "15A",
+        "nrSala": "110",
+        "professores": null,
+        "tpVaga": "E"
       }
     ]
   },
@@ -560,94 +616,6 @@ const DADOS = [
   {
     "retorno": null,
     "mensagem": null,
-    "cdDisciplina": 6712,
-    "nmNome": "Mecânica Dos Fluidos",
-    "sgCodicred": "4444L-04",
-    "sgCodi": null,
-    "sgCred": null,
-    "cdNivel": 5,
-    "tipoDisciplina": null,
-    "idTipoDisciplina": 1,
-    "nrCreditosPre": 0,
-    "stStatus": null,
-    "txCursado": null,
-    "txPlanejado": null,
-    "txCorequisito": null,
-    "cdCoRequisito": 10606,
-    "disciplinasPreRequisito": "",
-    "disciplinasSubstitutas": "\n4480K-06 - Fenomenos de Transporte I\n44295-04 - Mecânica dos Fluidos\n4444N-04 - Fenômenos de Transporte - Eca",
-    "disciplinasCoRequisitos": "",
-    "disciplinasRequisitosEspeciais": "\n95305-04 - Matemática Aplicada\n4444H-04 - Termodinâmica Aplicada",
-    "tipoRequisito": [
-      "ESP",
-      "SUB"
-    ],
-    "turmas": [
-      {
-        "cdDisciplina": 6712,
-        "idTurmaAluno": 0,
-        "idTurma": 1713,
-        "stMatricula": null,
-        "codigo": 390,
-        "txHorario": "2JK 4NP ",
-        "horario": [
-          "2J",
-          "2K",
-          "4N",
-          "4P"
-        ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
-        "txTurmaCurriculo": [
-          "4452-ENGENHARIA MECÂNICA"
-        ],
-        "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29 e Quarta-feira, das 21:15 às 22:45",
-        "vagas": 20,
-        "vagasVeterano": 20,
-        "vagasBixo": 0,
-        "vagasExtra": 0,
-        "vagasCentral": 0,
-        "incluido": null,
-        "nrPredio": "30F",
-        "nrSala": "114",
-        "professores": null,
-        "tpVaga": "V"
-      },
-      {
-        "cdDisciplina": 6712,
-        "idTurmaAluno": 0,
-        "idTurma": 1714,
-        "stMatricula": null,
-        "codigo": 380,
-        "txHorario": "2LM 4NP ",
-        "horario": [
-          "2L",
-          "2M",
-          "4N",
-          "4P"
-        ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
-        "txTurmaCurriculo": [
-          "4452-ENGENHARIA MECÂNICA"
-        ],
-        "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
-        "vagas": 20,
-        "vagasVeterano": 20,
-        "vagasBixo": 0,
-        "vagasExtra": 0,
-        "vagasCentral": 0,
-        "incluido": null,
-        "nrPredio": "30F",
-        "nrSala": "114",
-        "professores": null,
-        "tpVaga": "V"
-      }
-    ]
-  },
-  {
-    "retorno": null,
-    "mensagem": null,
     "cdDisciplina": 7013,
     "nmNome": "Gestão Empresarial Para Engenharia",
     "sgCodicred": "44721-02",
@@ -793,66 +761,6 @@ const DADOS = [
         "incluido": null,
         "nrPredio": "30B",
         "nrSala": "210",
-        "professores": null,
-        "tpVaga": "V"
-      }
-    ]
-  },
-  {
-    "retorno": null,
-    "mensagem": null,
-    "cdDisciplina": 10590,
-    "nmNome": "Conformação Mecânica",
-    "sgCodicred": "4444V-04",
-    "sgCodi": null,
-    "sgCred": null,
-    "cdNivel": 7,
-    "tipoDisciplina": null,
-    "idTipoDisciplina": 1,
-    "nrCreditosPre": 0,
-    "stStatus": null,
-    "txCursado": null,
-    "txPlanejado": null,
-    "txCorequisito": null,
-    "cdCoRequisito": null,
-    "disciplinasPreRequisito": "\n4444A-04 - Materiais Metálicos",
-    "disciplinasSubstitutas": "",
-    "disciplinasCoRequisitos": "",
-    "disciplinasRequisitosEspeciais": "\n4421R-04 - Resistência dos Materiais I - Em",
-    "tipoRequisito": [
-      "REQ",
-      "ESP",
-      "SUB"
-    ],
-    "turmas": [
-      {
-        "cdDisciplina": 10590,
-        "idTurmaAluno": 0,
-        "idTurma": 1658,
-        "stMatricula": null,
-        "codigo": 370,
-        "txHorario": "3JK 6JK ",
-        "horario": [
-          "3J",
-          "3K",
-          "6J",
-          "6K"
-        ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
-        "txTurmaCurriculo": [
-          "4442-ENGENHARIA MECÂNICA",
-          "4452-ENGENHARIA MECÂNICA"
-        ],
-        "txHorarioExtenso": "Terça-feira, das 17:35 às 19:29 e Sexta-feira, das 17:35 às 19:29",
-        "vagas": 60,
-        "vagasVeterano": 60,
-        "vagasBixo": 0,
-        "vagasExtra": 0,
-        "vagasCentral": 0,
-        "incluido": null,
-        "nrPredio": "30B",
-        "nrSala": "202",
         "professores": null,
         "tpVaga": "V"
       }
@@ -1043,66 +951,6 @@ const DADOS = [
         "incluido": null,
         "nrPredio": "30D",
         "nrSala": "203",
-        "professores": null,
-        "tpVaga": "V"
-      }
-    ]
-  },
-  {
-    "retorno": null,
-    "mensagem": null,
-    "cdDisciplina": 10588,
-    "nmNome": "Transferência De Calor",
-    "sgCodicred": "4444T-04",
-    "sgCodi": null,
-    "sgCred": null,
-    "cdNivel": 6,
-    "tipoDisciplina": null,
-    "idTipoDisciplina": 1,
-    "nrCreditosPre": 0,
-    "stStatus": null,
-    "txCursado": null,
-    "txPlanejado": null,
-    "txCorequisito": null,
-    "cdCoRequisito": null,
-    "disciplinasPreRequisito": "\n4444H-04 - Termodinâmica Aplicada",
-    "disciplinasSubstitutas": "\n4480L-06 - Fenomenos de Transporte II",
-    "disciplinasCoRequisitos": "",
-    "disciplinasRequisitosEspeciais": "\n95305-04 - Matemática Aplicada",
-    "tipoRequisito": [
-      "REQ",
-      "ESP",
-      "SUB"
-    ],
-    "turmas": [
-      {
-        "cdDisciplina": 10588,
-        "idTurmaAluno": 0,
-        "idTurma": 580,
-        "stMatricula": null,
-        "codigo": 370,
-        "txHorario": "4LM 5LM ",
-        "horario": [
-          "4L",
-          "4M",
-          "5L",
-          "5M"
-        ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
-        "txTurmaCurriculo": [
-          "4442-ENGENHARIA MECÂNICA",
-          "4452-ENGENHARIA MECÂNICA"
-        ],
-        "txHorarioExtenso": "Quarta-feira, das 19:30 às 21:00 e Quinta-feira, das 19:30 às 21:00",
-        "vagas": 60,
-        "vagasVeterano": 60,
-        "vagasBixo": 0,
-        "vagasExtra": 0,
-        "vagasCentral": 0,
-        "incluido": null,
-        "nrPredio": "30D",
-        "nrSala": "201",
         "professores": null,
         "tpVaga": "V"
       }
@@ -1832,36 +1680,6 @@ const DADOS = [
       {
         "cdDisciplina": 13451,
         "idTurmaAluno": 0,
-        "idTurma": 622,
-        "stMatricula": null,
-        "codigo": 350,
-        "txHorario": "4ABCD ",
-        "horario": [
-          "4A",
-          "4B",
-          "4C",
-          "4D"
-        ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
-        "txTurmaCurriculo": [
-          "3630-CURSO SUPERIOR DE TECNOLOGIA EM GASTRONOMIA"
-        ],
-        "txHorarioExtenso": "Quarta-feira, das 08:00 às 11:30",
-        "vagas": 0,
-        "vagasVeterano": 60,
-        "vagasBixo": 0,
-        "vagasExtra": 0,
-        "vagasCentral": 0,
-        "incluido": null,
-        "nrPredio": "11A",
-        "nrSala": "301",
-        "professores": null,
-        "tpVaga": "C"
-      },
-      {
-        "cdDisciplina": 13451,
-        "idTurmaAluno": 0,
         "idTurma": 612,
         "stMatricula": null,
         "codigo": 670,
@@ -1887,6 +1705,36 @@ const DADOS = [
         "incluido": null,
         "nrPredio": "50A",
         "nrSala": "410",
+        "professores": null,
+        "tpVaga": "C"
+      },
+      {
+        "cdDisciplina": 13451,
+        "idTurmaAluno": 0,
+        "idTurma": 622,
+        "stMatricula": null,
+        "codigo": 350,
+        "txHorario": "4ABCD ",
+        "horario": [
+          "4A",
+          "4B",
+          "4C",
+          "4D"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "3630-CURSO SUPERIOR DE TECNOLOGIA EM GASTRONOMIA"
+        ],
+        "txHorarioExtenso": "Quarta-feira, das 08:00 às 11:30",
+        "vagas": 0,
+        "vagasVeterano": 60,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "11A",
+        "nrSala": "301",
         "professores": null,
         "tpVaga": "C"
       },
@@ -2343,6 +2191,270 @@ const DADOS = [
         "nrSala": "202",
         "professores": null,
         "tpVaga": "C"
+      }
+    ]
+  },
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 10630,
+    "nmNome": "Eletrônica Básica - Em",
+    "sgCodicred": "4453U-02",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 6,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 1,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": null,
+    "disciplinasPreRequisito": "",
+    "disciplinasSubstitutas": "\n4452G-04 - Eletrônica Analógica - Ec",
+    "disciplinasCoRequisitos": "\n42187-04 - Eletromagnetismo",
+    "disciplinasRequisitosEspeciais": "",
+    "tipoRequisito": [
+      "COR",
+      "SUB"
+    ],
+    "turmas": [
+      {
+        "cdDisciplina": 10630,
+        "idTurmaAluno": 0,
+        "idTurma": 493,
+        "stMatricula": null,
+        "codigo": 480,
+        "txHorario": "2NP ",
+        "horario": [
+          "2N",
+          "2P"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "4452-ENGENHARIA MECÂNICA"
+        ],
+        "txHorarioExtenso": "Segunda-feira, das 21:15 às 22:45",
+        "vagas": 60,
+        "vagasVeterano": 60,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "30D",
+        "nrSala": "307",
+        "professores": null,
+        "tpVaga": "V"
+      }
+    ]
+  },
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 6712,
+    "nmNome": "Mecânica Dos Fluidos",
+    "sgCodicred": "4444L-04",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 5,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 1,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": 10606,
+    "disciplinasPreRequisito": "",
+    "disciplinasSubstitutas": "\n4480K-06 - Fenomenos de Transporte I\n44295-04 - Mecânica dos Fluidos\n4444N-04 - Fenômenos de Transporte - Eca",
+    "disciplinasCoRequisitos": "",
+    "disciplinasRequisitosEspeciais": "\n95305-04 - Matemática Aplicada\n4444H-04 - Termodinâmica Aplicada",
+    "tipoRequisito": [
+      "ESP",
+      "SUB"
+    ],
+    "turmas": [
+      {
+        "cdDisciplina": 6712,
+        "idTurmaAluno": 0,
+        "idTurma": 1713,
+        "stMatricula": null,
+        "codigo": 390,
+        "txHorario": "2JK 4NP ",
+        "horario": [
+          "2J",
+          "2K",
+          "4N",
+          "4P"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "4452-ENGENHARIA MECÂNICA"
+        ],
+        "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29 e Quarta-feira, das 21:15 às 22:45",
+        "vagas": 20,
+        "vagasVeterano": 20,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "30F",
+        "nrSala": "114",
+        "professores": null,
+        "tpVaga": "V"
+      },
+      {
+        "cdDisciplina": 6712,
+        "idTurmaAluno": 0,
+        "idTurma": 1714,
+        "stMatricula": null,
+        "codigo": 380,
+        "txHorario": "2LM 4NP ",
+        "horario": [
+          "2L",
+          "2M",
+          "4N",
+          "4P"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "4452-ENGENHARIA MECÂNICA"
+        ],
+        "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
+        "vagas": 20,
+        "vagasVeterano": 20,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "30F",
+        "nrSala": "114",
+        "professores": null,
+        "tpVaga": "V"
+      }
+    ]
+  },
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 10590,
+    "nmNome": "Conformação Mecânica",
+    "sgCodicred": "4444V-04",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 7,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 1,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": null,
+    "disciplinasPreRequisito": "\n4444A-04 - Materiais Metálicos",
+    "disciplinasSubstitutas": "",
+    "disciplinasCoRequisitos": "",
+    "disciplinasRequisitosEspeciais": "\n4421R-04 - Resistência dos Materiais I - Em",
+    "tipoRequisito": [
+      "REQ",
+      "ESP",
+      "SUB"
+    ],
+    "turmas": [
+      {
+        "cdDisciplina": 10590,
+        "idTurmaAluno": 0,
+        "idTurma": 1658,
+        "stMatricula": null,
+        "codigo": 370,
+        "txHorario": "3JK 6JK ",
+        "horario": [
+          "3J",
+          "3K",
+          "6J",
+          "6K"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "4442-ENGENHARIA MECÂNICA",
+          "4452-ENGENHARIA MECÂNICA"
+        ],
+        "txHorarioExtenso": "Terça-feira, das 17:35 às 19:29 e Sexta-feira, das 17:35 às 19:29",
+        "vagas": 60,
+        "vagasVeterano": 60,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "30B",
+        "nrSala": "202",
+        "professores": null,
+        "tpVaga": "V"
+      }
+    ]
+  },
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 10588,
+    "nmNome": "Transferência De Calor",
+    "sgCodicred": "4444T-04",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 6,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 1,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": null,
+    "disciplinasPreRequisito": "\n4444H-04 - Termodinâmica Aplicada",
+    "disciplinasSubstitutas": "\n4480L-06 - Fenomenos de Transporte II",
+    "disciplinasCoRequisitos": "",
+    "disciplinasRequisitosEspeciais": "\n95305-04 - Matemática Aplicada",
+    "tipoRequisito": [
+      "REQ",
+      "ESP",
+      "SUB"
+    ],
+    "turmas": [
+      {
+        "cdDisciplina": 10588,
+        "idTurmaAluno": 0,
+        "idTurma": 580,
+        "stMatricula": null,
+        "codigo": 370,
+        "txHorario": "4LM 5LM ",
+        "horario": [
+          "4L",
+          "4M",
+          "5L",
+          "5M"
+        ],
+        "tipo": "PRES",
+        "txDescricaoTipo": "Presencial",
+        "txTurmaCurriculo": [
+          "4442-ENGENHARIA MECÂNICA",
+          "4452-ENGENHARIA MECÂNICA"
+        ],
+        "txHorarioExtenso": "Quarta-feira, das 19:30 às 21:00 e Quinta-feira, das 19:30 às 21:00",
+        "vagas": 60,
+        "vagasVeterano": 60,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "30D",
+        "nrSala": "201",
+        "professores": null,
+        "tpVaga": "V"
       }
     ]
   }

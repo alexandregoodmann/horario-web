@@ -15,7 +15,6 @@ export class QuadroComponent implements OnInit {
 
   ngOnInit() {
     this.quadros = this.gradeService.montaQuadros();
-    console.log(this.quadros);
   }
 
 }
