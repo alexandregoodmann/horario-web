@@ -1,12 +1,13 @@
 <div class="card">
-  <div class="card-block" style="height: 45px;">
+  <div class="card-block" style="height: 80px;">
     <div *ngFor="let periodo of periodos">
       <label class="checkbox-linha">
-        <input type="checkbox" data-md-icheck (change)="checkPeriodo($event, periodo)" />
+        <input type="checkbox" (change)="mudar(periodo)" [checked]="periodo.checked" data-md-icheck />
         <strong>{{periodo.periodo}}</strong>
       </label>
     </div>
   </div>
+  <button (click)="atualizar()">Atualizar</button>
 </div>
 
 <table class="table">

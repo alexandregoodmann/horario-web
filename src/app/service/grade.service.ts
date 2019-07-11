@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Periodo } from '../model/periodo';
 import { Quadro } from '../model/quadro';
 import { TurmaDTO } from '../model/turma';
 
@@ -7,10 +9,29 @@ import { TurmaDTO } from '../model/turma';
 })
 export class GradeService {
 
+  constructor() {
+    this.setPeriodos();
+  }
+
+  setPeriodos() {
+    let periodos: Periodo[] = [];
+    PERIODOS.forEach(p => {
+      let pp = new Periodo();
+      pp.checked = false;
+      pp.periodo = p;
+      periodos.push(pp);
+    });
+    this.periodoBehavior.next(periodos);
+  }
+
+  private periodoBehavior = new BehaviorSubject<Array<Periodo>>(new Array<Periodo>());
+  periodoObservable = this.periodoBehavior.asObservable();
+
   private origem: TurmaDTO[] = [];
 
   private criaOrigem(): void {
     let lista = [...DADOS];
+
     lista.forEach(d => {
       d.turmas.forEach(t => {
         let turma = new TurmaDTO();
@@ -85,6 +106,8 @@ export class GradeService {
   }
 
 }
+
+const PERIODOS = ['A', 'B', 'C', 'D', 'F', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P'];
 
 const DADOS = [
   {
