@@ -72,6 +72,18 @@ export class GradeService {
     return livre;
   }
 
+  private getHorarios(lista: any) {
+    let m: Map<string, string> = new Map<string, string>();
+    lista.forEach(d => {
+      d.turmas.forEach(t => {
+        t.horario.forEach(h => {
+          let l = h.substring(1);
+          m.set(l, l);
+        })
+      });
+    });
+  }
+
 }
 
 const DADOS = [

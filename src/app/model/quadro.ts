@@ -55,4 +55,4 @@ export class Quadro {
 
 }
 
-const PERIODOS = ['A', 'B', 'C', 'D', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
+const PERIODOS = ['A', 'B', 'C', 'D', 'F', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P'];

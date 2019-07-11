@@ -15,7 +15,7 @@
   <tbody>
     <tr *ngFor="let linha of quadro.quadro">
       <td *ngFor="let aula of linha; let i = index">
-        <span *ngIf="i === 0">{{aula[0]}}</span>
+        <span *ngIf="i === 0">{{aula}}</span>
         <div *ngIf="i > 0">
           <strong>{{aula.sgCodCred}}</strong>
           <br>
