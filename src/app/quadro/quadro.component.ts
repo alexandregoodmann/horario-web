@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quadro } from '../model/quadro';
-import { GradeService } from '../service/grade.service';
+import { QuadroService } from '../service/quadro.service';
 
 @Component({
   selector: 'app-quadro',
@@ -11,10 +11,13 @@ export class QuadroComponent implements OnInit {
 
   private quadros: Quadro[] = [];
 
-  constructor(private gradeService: GradeService) { }
+  constructor(private quadroService: QuadroService) { }
 
   ngOnInit() {
-    this.quadros = this.gradeService.montaQuadros();
+    this.quadroService.quadrosObservable.subscribe(data => {
+      console.log(data);
+      this.quadros = data;
+    }); 
   }
 
 }

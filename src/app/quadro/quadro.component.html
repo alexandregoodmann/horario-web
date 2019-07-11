@@ -11,17 +11,18 @@
       <th>Sábado</th>
     </tr>
   </thead>
-
   <tbody>
-    <tr *ngFor="let linha of quadro.quadro">
-      <td *ngFor="let aula of linha; let i = index">
-        <span *ngIf="i === 0">{{aula}}</span>
-        <div *ngIf="i > 0">
-          <strong>{{aula.sgCodCred}}</strong>
-          <br>
-          {{aula.nmDisciplina}}
-        </div>
+    <tr *ngFor="let periodo of quadro.quadro | keyvalue">
+      <td>
+        {{periodo.key}}
       </td>
+      <td *ngFor="let aula periodo.value">{{aula}}</td>
+      <!--
+      <td *ngFor="let aula of periodo.value">
+        <strong>{{aula.sgCodCred}}</strong>
+        <br>
+        {{aula.nmDisciplina}}
+      </td>'-->
     </tr>
   </tbody>
 

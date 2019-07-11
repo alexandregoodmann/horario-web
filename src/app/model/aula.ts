@@ -1,4 +1,4 @@
-export class TurmaDTO {
+export class Aula {
     sgCodCred: string;
     nmDisciplina: string;
     codigoTurma: number;

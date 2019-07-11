@@ -1,11 +1,9 @@
-import { TurmaDTO } from "./turma";
+import { Aula } from "./aula";
 
 export class Quadro {
 
-    disciplinas: Map<String, TurmaDTO> = new Map<String, TurmaDTO>();
-    quadro: Array<Array<any>> = new Array<Array<any>>();
+    disciplinas: Map<String, Aula> = new Map<String, Aula>();
+    quadro: Map<string, Array<Aula>> = new Map<string, Array<Aula>>();
     totalCredito: number;
-
-    constructor() {
-    }
+    
 }
