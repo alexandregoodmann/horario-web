@@ -3,4 +3,5 @@ export class Aula {
     nmDisciplina: string;
     codigoTurma: number;
     horarios: string[];
+    vagas: number;
 }

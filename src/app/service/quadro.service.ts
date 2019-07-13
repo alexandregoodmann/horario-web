@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Aula } from '../model/aula';
-import { Periodo } from '../model/periodo';
+import { PeriodoFiltro } from '../model/periodo-filtro';
 import { Quadro } from '../model/quadro';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class QuadroService {
 
   private origem: Aula[] = [];
 
-  private periodoBehavior = new BehaviorSubject<Array<Periodo>>(new Array<Periodo>());
+  private periodoBehavior = new BehaviorSubject<Array<PeriodoFiltro>>(new Array<PeriodoFiltro>());
   periodoObservable = this.periodoBehavior.asObservable();
 
   private quadrosBehavior = new BehaviorSubject<Array<Quadro>>(new Array<Quadro>());
@@ -23,9 +23,9 @@ export class QuadroService {
   }
 
   private setPeriodos() {
-    let periodos: Periodo[] = [];
+    let periodos: PeriodoFiltro[] = [];
     PERIODOS.forEach(p => {
-      let pp = new Periodo();
+      let pp = new PeriodoFiltro();
       pp.checked = false;
       pp.periodo = p;
       periodos.push(pp);
@@ -35,23 +35,22 @@ export class QuadroService {
 
   private criaOrigem(): void {
     let lista = [...DADOS];
-    lista.forEach(d => {
-      d.turmas.forEach(t => {
-        if (t.vagas > 0) {
-          let aula = new Aula();
-          aula.codigoTurma = t.codigo;
-          aula.horarios = t.horario;
-          aula.nmDisciplina = d.nmNome;
-          aula.sgCodCred = d.sgCodicred;
-          this.origem.push(aula);
-        }
+    lista.forEach(dis => {
+      dis.turmas.forEach(t => {
+        let aula = new Aula();
+        aula.codigoTurma = t.codigo;
+        aula.horarios = t.horario;
+        aula.nmDisciplina = dis.nmNome;
+        aula.sgCodCred = dis.sgCodicred;
+        aula.vagas = t.vagas;
+        this.origem.push(aula);
       });
     });
   }
 
-  montaQuadros(): void {
+  montaQuadros() {
+    //monta os quadros
     let quadros: Quadro[] = [];
-    this.criaOrigem();
     while (this.origem.length > 0) {
       quadros.push(this.montarQuadro());
     }
@@ -63,15 +62,15 @@ export class QuadroService {
     let remover: number[] = [];
     let quadro: Quadro = new Quadro();
 
-    this.origem.forEach(t => {
+    this.origem.forEach(turma => {
       //se ainda não estiver no quadro
-      if (quadro.disciplinas.get(t.sgCodCred) === undefined) {
+      if (quadro.disciplinas.get(turma.sgCodCred) === undefined) {
         //se todos os horários desta turma estão livres
-        if (this.todasLivres(t.horarios, quadro)) {
+        if (this.todasLivres(turma.horarios, quadro)) {
           //adiciona no quadro as turmas
-          quadro.disciplinas.set(t.sgCodCred, t);
-          this.setAulas(quadro, t);
-          remover.push(this.origem.indexOf(t));
+          quadro.disciplinas.set(turma.sgCodCred, turma);
+          this.setAulas(quadro, turma);
+          remover.push(this.origem.indexOf(turma));
         }
       }
     });
@@ -83,31 +82,39 @@ export class QuadroService {
 
     this.calcularTotal(quadro);
 
+    quadro.periodos.sort(function (a, b) {
+      if (a.periodo > b.periodo) {
+        return 1;
+      }
+      if (a.periodo < b.periodo) {
+        return -1;
+      }
+      return 0;
+    });
+console.log(quadro);
+
     return quadro;
   }
 
-  private setAulas(quadro: Quadro, turma: Aula): void {
-    turma.horarios.forEach(h => {
-      let key = h.substring(1);
-      let periodo = quadro.quadro.get(key);
-      if (periodo === undefined) {
-        periodo = new Array<Aula>(6);
+  private setAulas(quadro: Quadro, aula: Aula): void {
+    aula.horarios.forEach(h => {
+      //2J 2K; 
+      let pos = Number.parseInt(h.substring(0, 1)) - 2;
+      let per = h.substring(1);
+      if (quadro.getPeriodo(per) === undefined) {
+        quadro.criaPeriodo(per).aulas[pos] = aula;
       }
-      let dia = Number.parseInt(h.substring(0, 1)) - 1;
-      periodo[dia] = turma;
-      quadro.quadro.set(key, periodo);
     });
   }
 
   private todasLivres(horarios: string[], quadro: Quadro): boolean {
     let livre: boolean = true;
     horarios.forEach(h => {
-      let periodo = quadro.quadro.get(h.substring(1));
-      if (periodo != undefined) {
-        let dia = Number.parseInt(h.substring(0, 1)) - 1;
-        if (periodo[dia] !== undefined) {
-          livre = false;
-        }
+      let pos = Number.parseInt(h.substring(0, 1)) - 2;
+      let per = h.substring(1);
+      let periodo = quadro.getPeriodo(per);
+      if (periodo !== undefined && periodo[pos] !== undefined) {
+        livre = false;
       }
     });
     return livre;
@@ -126,6 +133,66 @@ export class QuadroService {
 const PERIODOS = ['A', 'B', 'C', 'D', 'F', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P'];
 
 const DADOS = [
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 10586,
+    "nmNome": "Vibrações Mecânicas",
+    "sgCodicred": "4444R-04",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 6,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 1,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": null,
+    "disciplinasPreRequisito": "\n95305-04 - Matemática Aplicada",
+    "disciplinasSubstitutas": "",
+    "disciplinasCoRequisitos": "",
+    "disciplinasRequisitosEspeciais": "",
+    "tipoRequisito": [
+      "REQ",
+      "SUB"
+    ],
+    "turmas": [
+      {
+        "cdDisciplina": 10586,
+        "idTurmaAluno": 0,
+        "idTurma": 722,
+        "stMatricula": null,
+        "codigo": 370,
+        "txHorario": "2LM 4NP ",
+        "horario": [
+          "2L",
+          "2M",
+          "4N",
+          "4P"
+        ],
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
+        "txTurmaCurriculo": [
+          "4442-ENGENHARIA MECÂNICA",
+          "4452-ENGENHARIA MECÂNICA"
+        ],
+        "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
+        "vagas": 60,
+        "vagasVeterano": 60,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "30D",
+        "nrSala": "207",
+        "professores": null,
+        "tpVaga": "V",
+        "tpTurma": "N"
+      }
+    ]
+  },
   {
     "retorno": null,
     "mensagem": null,
@@ -151,9 +218,9 @@ const DADOS = [
     "turmas": [
       {
         "cdDisciplina": 26927,
-        "idTurmaAluno": 0,
+        "idTurmaAluno": 10413,
         "idTurma": 2286,
-        "stMatricula": null,
+        "stMatricula": "R",
         "codigo": 670,
         "txHorario": "4ABCD ",
         "horario": [
@@ -162,8 +229,8 @@ const DADOS = [
           "4C",
           "4D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
         ],
@@ -173,11 +240,12 @@ const DADOS = [
         "vagasBixo": 0,
         "vagasExtra": 0,
         "vagasCentral": 0,
-        "incluido": null,
+        "incluido": true,
         "nrPredio": "15A",
         "nrSala": "206",
         "professores": null,
-        "tpVaga": "E"
+        "tpVaga": "E",
+        "tpTurma": "N"
       }
     ]
   },
@@ -220,8 +288,8 @@ const DADOS = [
           "6N",
           "6P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4442-ENGENHARIA MECÂNICA",
           "4452-ENGENHARIA MECÂNICA"
@@ -236,7 +304,64 @@ const DADOS = [
         "nrPredio": "30F",
         "nrSala": "119",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
+      }
+    ]
+  },
+  {
+    "retorno": null,
+    "mensagem": null,
+    "cdDisciplina": 27152,
+    "nmNome": "Laboratório - Mercado E Modelagem De Negócios",
+    "sgCodicred": "254ET-04",
+    "sgCodi": null,
+    "sgCred": null,
+    "cdNivel": 0,
+    "tipoDisciplina": null,
+    "idTipoDisciplina": 3,
+    "nrCreditosPre": 0,
+    "stStatus": null,
+    "txCursado": null,
+    "txPlanejado": null,
+    "txCorequisito": null,
+    "cdCoRequisito": null,
+    "disciplinasPreRequisito": "",
+    "disciplinasSubstitutas": "",
+    "disciplinasCoRequisitos": "",
+    "disciplinasRequisitosEspeciais": "",
+    "tipoRequisito": [],
+    "turmas": [
+      {
+        "cdDisciplina": 27152,
+        "idTurmaAluno": 0,
+        "idTurma": 2117,
+        "stMatricula": null,
+        "codigo": 670,
+        "txHorario": "6ABCD ",
+        "horario": [
+          "6A",
+          "6B",
+          "6C",
+          "6D"
+        ],
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
+        "txTurmaCurriculo": [
+          "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
+        ],
+        "txHorarioExtenso": "Sexta-feira, das 08:00 às 11:30",
+        "vagas": 0,
+        "vagasVeterano": 30,
+        "vagasBixo": 0,
+        "vagasExtra": 0,
+        "vagasCentral": 0,
+        "incluido": null,
+        "nrPredio": "15A",
+        "nrSala": "214",
+        "professores": null,
+        "tpVaga": "E",
+        "tpTurma": "N"
       }
     ]
   },
@@ -265,9 +390,9 @@ const DADOS = [
     "turmas": [
       {
         "cdDisciplina": 26898,
-        "idTurmaAluno": 0,
+        "idTurmaAluno": 10415,
         "idTurma": 2469,
-        "stMatricula": null,
+        "stMatricula": "R",
         "codigo": 670,
         "txHorario": "5ABCD ",
         "horario": [
@@ -276,8 +401,8 @@ const DADOS = [
           "5C",
           "5D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
         ],
@@ -287,11 +412,12 @@ const DADOS = [
         "vagasBixo": 0,
         "vagasExtra": 0,
         "vagasCentral": 0,
-        "incluido": null,
+        "incluido": true,
         "nrPredio": "15A",
         "nrSala": "110",
         "professores": null,
-        "tpVaga": "E"
+        "tpVaga": "E",
+        "tpTurma": "N"
       }
     ]
   },
@@ -332,8 +458,8 @@ const DADOS = [
           "3L",
           "3M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4452-ENGENHARIA MECÂNICA"
         ],
@@ -347,7 +473,8 @@ const DADOS = [
         "nrPredio": "32A",
         "nrSala": "303",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -387,8 +514,8 @@ const DADOS = [
           "2J",
           "2K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -412,7 +539,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "210",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 27828,
@@ -425,8 +553,8 @@ const DADOS = [
           "3N",
           "3P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -450,7 +578,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "205",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 27828,
@@ -463,8 +592,8 @@ const DADOS = [
           "6L",
           "6M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -488,7 +617,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "203",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 27828,
@@ -501,8 +631,8 @@ const DADOS = [
           "6J",
           "6K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -526,7 +656,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "207",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 27828,
@@ -539,8 +670,8 @@ const DADOS = [
           "5L",
           "5M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -564,7 +695,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "205",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 27828,
@@ -577,8 +709,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -602,7 +734,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "205",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -645,8 +778,8 @@ const DADOS = [
           "5J",
           "5K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4452-ENGENHARIA MECÂNICA"
         ],
@@ -660,7 +793,8 @@ const DADOS = [
         "nrPredio": "30B",
         "nrSala": "210",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -700,8 +834,8 @@ const DADOS = [
           "6J",
           "6K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -729,7 +863,8 @@ const DADOS = [
         "nrPredio": "32A",
         "nrSala": "307",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 7013,
@@ -742,8 +877,8 @@ const DADOS = [
           "5N",
           "5P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -771,7 +906,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "204",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 7013,
@@ -784,8 +920,8 @@ const DADOS = [
           "4L",
           "4M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4451-ENGENHARIA CIVIL",
           "4450-ENGENHARIA DE COMPUTAÇÃO",
@@ -813,7 +949,8 @@ const DADOS = [
         "nrPredio": "30B",
         "nrSala": "210",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -858,8 +995,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4442-ENGENHARIA MECÂNICA",
           "4452-ENGENHARIA MECÂNICA"
@@ -874,7 +1011,8 @@ const DADOS = [
         "nrPredio": "30B",
         "nrSala": "203",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -919,8 +1057,8 @@ const DADOS = [
           "3L",
           "3M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4447-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
           "4455-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
@@ -937,7 +1075,8 @@ const DADOS = [
         "nrPredio": "30F",
         "nrSala": "117",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 10606,
@@ -952,8 +1091,8 @@ const DADOS = [
           "3L",
           "3M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4447-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
           "4455-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
@@ -970,7 +1109,8 @@ const DADOS = [
         "nrPredio": "30F",
         "nrSala": "117",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 10606,
@@ -985,8 +1125,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4447-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
           "4455-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
@@ -1003,7 +1143,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "203",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -1045,8 +1186,8 @@ const DADOS = [
           "4E",
           "4E1"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1088,7 +1229,8 @@ const DADOS = [
         "nrPredio": "32A",
         "nrSala": "313",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1103,8 +1245,8 @@ const DADOS = [
           "6N",
           "6P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "120L-CURSO SUPERIOR DE TECNOLOGIA EM ESCRITA CRIATIVA",
           "120J-LETRAS - INGLÊS",
@@ -1120,7 +1262,8 @@ const DADOS = [
         "nrPredio": "08A",
         "nrSala": "231",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1135,8 +1278,8 @@ const DADOS = [
           "6N",
           "6P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1178,7 +1321,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "402",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1193,8 +1337,8 @@ const DADOS = [
           "4J",
           "4K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "151A-CIÊNCIAS SOCIAIS",
           "151B-CIÊNCIAS SOCIAIS",
@@ -1228,7 +1372,8 @@ const DADOS = [
         "nrPredio": "07A",
         "nrSala": "314",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1243,8 +1388,8 @@ const DADOS = [
           "4C",
           "4D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "3205-ODONTOLOGIA"
         ],
@@ -1258,7 +1403,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "403",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1273,8 +1419,8 @@ const DADOS = [
           "3H",
           "3I"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2436-DIREITO"
         ],
@@ -1288,7 +1434,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "712",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1303,8 +1450,8 @@ const DADOS = [
           "5C",
           "5D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2425-DIREITO"
         ],
@@ -1318,7 +1465,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "604",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1333,8 +1481,8 @@ const DADOS = [
           "5N",
           "5P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1376,7 +1524,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "413",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1391,8 +1540,8 @@ const DADOS = [
           "4L",
           "4M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1434,7 +1583,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "408",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1449,8 +1599,8 @@ const DADOS = [
           "5J",
           "5K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "151A-CIÊNCIAS SOCIAIS",
           "151B-CIÊNCIAS SOCIAIS",
@@ -1484,7 +1634,8 @@ const DADOS = [
         "nrPredio": "07A",
         "nrSala": "314",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1499,8 +1650,8 @@ const DADOS = [
           "2N",
           "2P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "250T-ADMINISTRAÇÃO / LF ADMINISTRAÇÃO DE EMPRESAS",
           "250U-ADMINISTRAÇÃO / LF COMÉRCIO INTERNACIONAL",
@@ -1517,7 +1668,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "608",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1532,8 +1684,8 @@ const DADOS = [
           "5A",
           "5B"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2425-DIREITO"
         ],
@@ -1547,7 +1699,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "514",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1562,8 +1715,8 @@ const DADOS = [
           "6H",
           "6I"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "152C-HISTÓRIA",
           "152D-HISTÓRIA",
@@ -1580,7 +1733,8 @@ const DADOS = [
         "nrPredio": "09A",
         "nrSala": "213",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1595,8 +1749,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1638,7 +1792,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "404",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1653,8 +1808,8 @@ const DADOS = [
           "5J",
           "5K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1696,7 +1851,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "402",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1711,8 +1867,8 @@ const DADOS = [
           "5J",
           "5K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "1311-PSICOLOGIA"
         ],
@@ -1726,7 +1882,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "606",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1741,8 +1898,8 @@ const DADOS = [
           "2C",
           "2D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO",
           "2556-CIÊNCIAS ECONÔMICAS - LF FINANÇAS"
@@ -1757,7 +1914,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "410",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1772,8 +1930,8 @@ const DADOS = [
           "4C",
           "4D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "3630-CURSO SUPERIOR DE TECNOLOGIA EM GASTRONOMIA"
         ],
@@ -1787,7 +1945,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "301",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1802,8 +1961,8 @@ const DADOS = [
           "5C",
           "5D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2425-DIREITO"
         ],
@@ -1817,7 +1976,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "503",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1832,8 +1992,8 @@ const DADOS = [
           "5L",
           "5M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "1311-PSICOLOGIA"
         ],
@@ -1847,7 +2007,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "304",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1862,8 +2023,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4804-ARQUITETURA E URBANISMO",
           "4604-CIÊNCIA DA COMPUTAÇÃO",
@@ -1905,7 +2066,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "412",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1920,8 +2082,8 @@ const DADOS = [
           "5A",
           "5B"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2425-DIREITO"
         ],
@@ -1935,7 +2097,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "504",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1950,8 +2113,8 @@ const DADOS = [
           "6C",
           "6D"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "3606-ENFERMAGEM",
           "3607-ENFERMAGEM"
@@ -1966,7 +2129,8 @@ const DADOS = [
         "nrPredio": "80A",
         "nrSala": "302",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -1981,8 +2145,8 @@ const DADOS = [
           "5L",
           "5M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2415-DIREITO"
         ],
@@ -1996,7 +2160,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "703",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2011,8 +2176,8 @@ const DADOS = [
           "5N",
           "5P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "255A-ADMINISTRAÇÃO - LF EM ADMINISTRAÇÃO DE EMPRESAS",
           "255B-ADMINISTRAÇÃO - LF EM LIDERANÇA E GESTÃO DE PESSOAS",
@@ -2031,7 +2196,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "807",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2046,8 +2212,8 @@ const DADOS = [
           "3N",
           "3P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "255A-ADMINISTRAÇÃO - LF EM ADMINISTRAÇÃO DE EMPRESAS",
           "255B-ADMINISTRAÇÃO - LF EM LIDERANÇA E GESTÃO DE PESSOAS",
@@ -2066,7 +2232,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "711",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2081,8 +2248,8 @@ const DADOS = [
           "5E",
           "5E1"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "151A-CIÊNCIAS SOCIAIS",
           "151B-CIÊNCIAS SOCIAIS",
@@ -2116,7 +2283,8 @@ const DADOS = [
         "nrPredio": "07A",
         "nrSala": "303",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2131,8 +2299,8 @@ const DADOS = [
           "4H",
           "4I"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "3205-ODONTOLOGIA"
         ],
@@ -2146,7 +2314,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "413",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2161,8 +2330,8 @@ const DADOS = [
           "5N",
           "5P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "2415-DIREITO"
         ],
@@ -2176,7 +2345,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "503",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2191,8 +2361,8 @@ const DADOS = [
           "6N",
           "6P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "255A-ADMINISTRAÇÃO - LF EM ADMINISTRAÇÃO DE EMPRESAS",
           "255B-ADMINISTRAÇÃO - LF EM LIDERANÇA E GESTÃO DE PESSOAS",
@@ -2211,7 +2381,8 @@ const DADOS = [
         "nrPredio": "50A",
         "nrSala": "602",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 13451,
@@ -2226,8 +2397,8 @@ const DADOS = [
           "5L",
           "5M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "3510-FARMÁCIA"
         ],
@@ -2241,7 +2412,8 @@ const DADOS = [
         "nrPredio": "11A",
         "nrSala": "202",
         "professores": null,
-        "tpVaga": "C"
+        "tpVaga": "C",
+        "tpTurma": "N"
       }
     ]
   },
@@ -2282,8 +2454,8 @@ const DADOS = [
           "2N",
           "2P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4452-ENGENHARIA MECÂNICA"
         ],
@@ -2297,7 +2469,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "307",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -2340,8 +2513,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4452-ENGENHARIA MECÂNICA"
         ],
@@ -2355,7 +2528,8 @@ const DADOS = [
         "nrPredio": "30F",
         "nrSala": "114",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       },
       {
         "cdDisciplina": 6712,
@@ -2370,8 +2544,8 @@ const DADOS = [
           "4N",
           "4P"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4452-ENGENHARIA MECÂNICA"
         ],
@@ -2385,7 +2559,8 @@ const DADOS = [
         "nrPredio": "30F",
         "nrSala": "114",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -2429,8 +2604,8 @@ const DADOS = [
           "6J",
           "6K"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4442-ENGENHARIA MECÂNICA",
           "4452-ENGENHARIA MECÂNICA"
@@ -2445,7 +2620,8 @@ const DADOS = [
         "nrPredio": "30B",
         "nrSala": "202",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   },
@@ -2489,8 +2665,8 @@ const DADOS = [
           "5L",
           "5M"
         ],
-        "tipo": "PRES",
-        "txDescricaoTipo": "Presencial",
+        "tipo": "",
+        "txDescricaoTipo": "Pres",
         "txTurmaCurriculo": [
           "4442-ENGENHARIA MECÂNICA",
           "4452-ENGENHARIA MECÂNICA"
@@ -2505,7 +2681,8 @@ const DADOS = [
         "nrPredio": "30D",
         "nrSala": "201",
         "professores": null,
-        "tpVaga": "V"
+        "tpVaga": "V",
+        "tpTurma": "N"
       }
     ]
   }

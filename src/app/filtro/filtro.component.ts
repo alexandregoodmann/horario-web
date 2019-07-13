@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Periodo } from '../model/periodo';
+import { PeriodoFiltro } from '../model/periodo-filtro';
 import { QuadroService } from '../service/quadro.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { QuadroService } from '../service/quadro.service';
 })
 export class FiltroComponent implements OnInit {
 
-  private periodos: Periodo[] = [];
+  private periodos: PeriodoFiltro[] = [];
 
   constructor(private quadroService: QuadroService) { }
 
@@ -17,14 +17,13 @@ export class FiltroComponent implements OnInit {
     this.quadroService.periodoObservable.subscribe(data => {
       this.periodos = data;
     });
-    this.quadroService.montaQuadros();
-  } 
-
-  atualizar() {
-    
   }
 
-  mudar(periodo: Periodo) {
+  atualizar() {
+    this.quadroService.montaQuadros();
+  }
+
+  mudar(periodo: PeriodoFiltro) {
     if (periodo.checked) {
       periodo.checked = false;
     } else {

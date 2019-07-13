@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Aula } from '../model/aula';
 import { Quadro } from '../model/quadro';
 import { QuadroService } from '../service/quadro.service';
 
@@ -15,9 +16,14 @@ export class QuadroComponent implements OnInit {
 
   ngOnInit() {
     this.quadroService.quadrosObservable.subscribe(data => {
-      console.log(data);
       this.quadros = data;
-    }); 
+    });
+  }
+
+  getClass(aula: Aula) {
+    if (aula.vagas === 0) {
+      return 'sem-vagas';
+    }
   }
 
 }

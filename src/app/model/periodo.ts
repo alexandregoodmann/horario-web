@@ -1,4 +1,6 @@
+import { Aula } from "./aula";
+
 export class Periodo {
-    periodo: string;
-    checked: boolean;
+    periodo: string = '';
+    aulas: Aula[] = Array<Aula>(6);
 }

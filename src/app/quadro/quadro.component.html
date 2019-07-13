@@ -12,17 +12,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let periodo of quadro.quadro | keyvalue">
+    <tr *ngFor="let periodo of quadro.periodos">
       <td>
-        {{periodo.key}}
+        {{periodo.periodo}}
       </td>
-      <td *ngFor="let aula periodo.value">{{aula}}</td>
-      <!--
-      <td *ngFor="let aula of periodo.value">
-        <strong>{{aula.sgCodCred}}</strong>
-        <br>
-        {{aula.nmDisciplina}}
-      </td>'-->
+      <td *ngFor="let aula of periodo.aulas">
+        <div *ngIf="aula !== undfined" [class]="getClass(aula)">
+          <strong>
+            <span>{{aula.sgCodCred}}</span>
+          </strong>
+          <br>
+          <span>{{aula.nmDisciplina}}</span>
+          <br>
+          <span>{{aula.horarios}}</span>
+        </div>
+      </td>
     </tr>
   </tbody>
 
