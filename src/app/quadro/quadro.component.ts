@@ -26,4 +26,9 @@ export class QuadroComponent implements OnInit {
     }
   }
 
+  show(quadro: Quadro){
+    console.log(quadro);
+    
+  }
+
 }

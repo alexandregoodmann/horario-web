@@ -19,7 +19,6 @@ export class QuadroService {
 
   constructor() {
     this.setPeriodos();
-    this.criaOrigem();
   }
 
   private setPeriodos() {
@@ -35,6 +34,7 @@ export class QuadroService {
 
   private criaOrigem(): void {
     let lista = [...DADOS];
+
     lista.forEach(dis => {
       dis.turmas.forEach(t => {
         let aula = new Aula();
@@ -49,11 +49,22 @@ export class QuadroService {
   }
 
   montaQuadros() {
+    this.criaOrigem();
     //monta os quadros
     let quadros: Quadro[] = [];
     while (this.origem.length > 0) {
       quadros.push(this.montarQuadro());
     }
+
+    quadros.sort(function (a, b) {
+      if (a.totalCredito > b.totalCredito) {
+        return -1;
+      }
+      if (a.totalCredito < b.totalCredito) {
+        return 1;
+      }
+      return 0;
+    });
     this.quadrosBehavior.next(quadros);
   }
 
@@ -91,7 +102,6 @@ export class QuadroService {
       }
       return 0;
     });
-console.log(quadro);
 
     return quadro;
   }
@@ -101,8 +111,11 @@ console.log(quadro);
       //2J 2K; 
       let pos = Number.parseInt(h.substring(0, 1)) - 2;
       let per = h.substring(1);
-      if (quadro.getPeriodo(per) === undefined) {
+      let periodo = quadro.getPeriodo(per);
+      if (periodo === undefined) {
         quadro.criaPeriodo(per).aulas[pos] = aula;
+      } else {
+        periodo.aulas[pos] = aula;
       }
     });
   }
@@ -110,9 +123,11 @@ console.log(quadro);
   private todasLivres(horarios: string[], quadro: Quadro): boolean {
     let livre: boolean = true;
     horarios.forEach(h => {
+
       let pos = Number.parseInt(h.substring(0, 1)) - 2;
       let per = h.substring(1);
       let periodo = quadro.getPeriodo(per);
+
       if (periodo !== undefined && periodo[pos] !== undefined) {
         livre = false;
       }
