@@ -17,40 +17,71 @@ export class QuadroService {
   private quadrosBehavior = new BehaviorSubject<Array<Quadro>>(new Array<Quadro>());
   quadrosObservable = this.quadrosBehavior.asObservable();
 
+  private cadeirasBehavior = new BehaviorSubject<Array<Aula>>(new Array<Aula>());
+  cadeirasObservable = this.cadeirasBehavior.asObservable();
+
   constructor() {
     this.setPeriodos();
+    this.listaCadeiras();
+  }
+
+  private listaCadeiras(): void {
+    let lista = [...DADOS];
+    let cadeiras: Aula[] = [];
+    lista.forEach(d => {
+      let cadeira = new Aula();
+      cadeira.sgCodCred = d.sgCodicred;
+      cadeira.nmDisciplina = d.nmNome;
+      cadeiras.push(cadeira);
+    });
+    this.cadeirasBehavior.next(cadeiras);
   }
 
   private setPeriodos() {
     let periodos: PeriodoFiltro[] = [];
     PERIODOS.forEach(p => {
       let pp = new PeriodoFiltro();
-      pp.checked = false;
+      pp.checked = true;
       pp.periodo = p;
       periodos.push(pp);
     });
     this.periodoBehavior.next(periodos);
   }
 
-  private criaOrigem(): void {
-    let lista = [...DADOS];
+  private criaOrigem(periodos: string[], cadeiras: string[]): void {
 
-    lista.forEach(dis => {
-      dis.turmas.forEach(t => {
-        let aula = new Aula();
-        aula.codigoTurma = t.codigo;
-        aula.horarios = t.horario;
-        aula.nmDisciplina = dis.nmNome;
-        aula.sgCodCred = dis.sgCodicred;
-        aula.vagas = t.vagas;
-        this.origem.push(aula);
+    let lista = [...DADOS];
+    
+    this.cadeirasObservable.subscribe(data => {
+      lista.forEach(dis => {
+        if (cadeiras.includes(dis.sgCodicred)) {
+          dis.turmas.forEach(t => {
+            let add: boolean = false;
+            t.horario.forEach(h => {
+              if (periodos.includes(h.substring(1))) {
+                add = true;
+              }
+            });
+            if (add) {
+              let aula = new Aula();
+              aula.codigoTurma = t.codigo;
+              aula.horarios = t.horario;
+              aula.nmDisciplina = dis.nmNome;
+              aula.sgCodCred = dis.sgCodicred;
+              aula.vagas = t.vagas;
+              this.origem.push(aula);
+            }
+          });
+        }
       });
     });
+
   }
 
-  montaQuadros() {
-    this.criaOrigem();
-    //monta os quadros
+  montaQuadros(periodos: string[], cadeiras: string[]) {
+
+    this.criaOrigem(periodos, cadeiras);
+
     let quadros: Quadro[] = [];
     while (this.origem.length > 0) {
       quadros.push(this.montarQuadro());
@@ -77,7 +108,7 @@ export class QuadroService {
       //se ainda não estiver no quadro
       if (quadro.disciplinas.get(turma.sgCodCred) === undefined) {
         //se todos os horários desta turma estão livres
-        if (this.todasLivres(turma.horarios, quadro)) {
+        if (this.todasLivres(quadro, turma.horarios)) {
           //adiciona no quadro as turmas
           quadro.disciplinas.set(turma.sgCodCred, turma);
           this.setAulas(quadro, turma);
@@ -120,18 +151,21 @@ export class QuadroService {
     });
   }
 
-  private todasLivres(horarios: string[], quadro: Quadro): boolean {
-    let livre: boolean = true;
-    horarios.forEach(h => {
+  private todasLivres(quadro: Quadro, horarios: string[]): boolean {
 
+    let livre: boolean = true;
+
+    horarios.forEach(h => {
       let pos = Number.parseInt(h.substring(0, 1)) - 2;
       let per = h.substring(1);
       let periodo = quadro.getPeriodo(per);
-
-      if (periodo !== undefined && periodo[pos] !== undefined) {
-        livre = false;
+      if (periodo !== undefined) {
+        if (periodo.aulas[pos] !== undefined) {
+          livre = false;
+        }
       }
     });
+
     return livre;
   }
 
@@ -141,6 +175,7 @@ export class QuadroService {
       total = total + Number.parseInt(k.substring(k.length - 2));
     });
     quadro.totalCredito = total;
+    quadro.totalDisciplinas = quadro.disciplinas.size;
   }
 
 }

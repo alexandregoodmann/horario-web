@@ -5,28 +5,19 @@
   </header>
 
   <div class="content-container">
-    <clr-tabs style="width: 100%">
+    
+    <div class="clr-row" style="width: 100%">
+      <div class="clr-col-4">
+        <div style="padding: 0 0 0 15px">
+          <app-filtro></app-filtro>
+        </div>
+      </div>
+      <div class="clr-col-8">
+        <div style="padding: 0 15px 0 0">
+          <app-quadro></app-quadro>
+        </div>
+      </div>
+    </div>
 
-      <clr-tab>
-        <button clrTabLink>Montar Quadros</button>
-        <clr-tab-content *clrIfActive="true">
-
-          <div class="clr-row">
-            <div class="clr-col-4">
-              <div style="padding: 0 0 0 15px">
-                <app-filtro></app-filtro>
-              </div>
-            </div>
-            <div class="clr-col-8">
-              <div style="padding: 0 15px 0 0">
-                <app-quadro></app-quadro>
-              </div>
-            </div>
-          </div>
-
-        </clr-tab-content>
-      </clr-tab>
-
-    </clr-tabs>
   </div>
 </div>

@@ -6,6 +6,7 @@ export class Quadro {
     disciplinas: Map<String, Aula> = new Map<String, Aula>();
     periodos: Periodo[] = []
     totalCredito: number;
+    totalDisciplinas: number;
 
     getPeriodo(periodo: string): Periodo {
         let f = this.periodos.filter(o => o.periodo === periodo);
@@ -19,6 +20,7 @@ export class Quadro {
     criaPeriodo(periodo: string): Periodo {
         let per = new Periodo();
         per.periodo = periodo;
+        per.horario = per.horarios.get(periodo);
         this.periodos.push(per);
         return per;
     }

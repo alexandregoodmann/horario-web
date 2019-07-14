@@ -1,5 +1,4 @@
 <table class="table" *ngFor="let quadro of quadros">
-<button (click)="show(quadro)">ok</button>
   <thead>
     <tr>
       <th>Período</th>
@@ -14,7 +13,11 @@
   <tbody>
     <tr *ngFor="let periodo of quadro.periodos">
       <td>
-        {{periodo.periodo}}
+        <strong>
+          {{periodo.periodo}}
+        </strong>
+        <br>
+        {{periodo.horario}}
       </td>
       <td *ngFor="let aula of periodo.aulas">
         <div *ngIf="aula !== undfined" [class]="getClass(aula)">
@@ -33,7 +36,7 @@
   <tfoot>
     <tr>
       <td colspan="7" style="text-align: right">
-        <strong>{{quadro.totalCredito}}</strong> - Créditos
+        <strong>{{quadro.totalCredito}}</strong> - Créditos | <strong>{{quadro.totalDisciplinas}}</strong> - Disciplinas
       </td>
     </tr>
   </tfoot>

@@ -1,5 +1,14 @@
 <div class="card">
-  <div class="card-block" style="height: 80px;">
+  <div class="card-header">
+    <span>Períodos</span>
+
+    <div style="float: right">
+      <input type="checkbox" name="checkTodos" checked (change)="setTodos($event)" />
+      <label for="checkTodos">Todos</label>
+    </div>
+
+  </div>
+  <div class="card-block altura">
     <div *ngFor="let periodo of periodos">
       <label class="checkbox-linha">
         <input type="checkbox" (change)="mudar(periodo)" [checked]="periodo.checked" data-md-icheck />
@@ -7,31 +16,42 @@
       </label>
     </div>
   </div>
-  <button (click)="atualizar()">Atualizar</button>
+  <div class="card-footer">
+    <button class="btn btn-sm btn-link" (click)="atualizar()">Atualizar</button>
+  </div>
 </div>
 
 <table class="table">
   <colgroup>
-    <col width="25%">
-    <col width="70%">
     <col width="5%">
+    <col width="20%">
+    <col width="75%">
   </colgroup>
   <thead>
     <tr>
-      <th>CodCred</th>
+      <th><input type="checkbox" checked data-md-icheck (change)="checkTodasCadeira($event)" /></th>
+      <th>Código</th>
       <th>Descrição</th>
-      <th>Ignorar</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let cadeira of cadeiras">
-      <td><strong>{{cadeira.codigo}}</strong></td>
-      <td style="text-align: left">{{cadeira.descricao}}</td>
       <td style="text-align: center">
         <label class="checkbox-linha">
-          <input type="checkbox" data-md-icheck (change)="checkCadeira($event, cadeira)" />
+          <input type="checkbox" [checked]="cadeira.checked" data-md-icheck (change)="checkCadeira($event, cadeira)" />
         </label>
       </td>
+      <td>{{cadeira.sgCodCred}}</td>
+      <td style="text-align: left">{{cadeira.nmDisciplina}}</td>
     </tr>
   </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="3" style="text-align: right">
+        <strong>{{cadeiras.length}}</strong> - Cadeiras
+      </td>
+    </tr>
+  </tfoot>
+
 </table>

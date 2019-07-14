@@ -4,4 +4,5 @@ export class Aula {
     codigoTurma: number;
     horarios: string[];
     vagas: number;
+    checked: boolean = true;
 }
