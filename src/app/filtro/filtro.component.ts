@@ -11,8 +11,8 @@ import { QuadroService } from '../service/quadro.service';
 export class FiltroComponent implements OnInit {
 
   private periodos: PeriodoFiltro[] = [];
-  private todos: boolean = true;
   private cadeiras: Aula[] = [];
+  private filtroPeriodo: string[] = [];
 
   constructor(private quadroService: QuadroService) { }
 
@@ -21,17 +21,37 @@ export class FiltroComponent implements OnInit {
       this.periodos = data;
     });
     this.quadroService.cadeirasObservable.subscribe(data => this.cadeiras = data);
-    this.atualizar();
   }
 
-  atualizar() {
+  private addRem(e: any, vet: string[]) {
+    if (e.target.checked) {
+      vet.forEach(v => {
+        this.filtroPeriodo.push(v);
+      });
+    } else {
+      vet.forEach(v => {
+        let i = this.filtroPeriodo.indexOf(v);
+        this.filtroPeriodo.splice(i, 1);
+      });
+    }
+  }
 
-    //atualiza com os periodos marcados
-    let periodos: string[] = [];
-    let per = this.periodos.filter(o => o.checked);
-    per.forEach(p => {
-      periodos.push(p.periodo);
-    })
+  atualizar(e) {
+
+    if (e.target.value === 'manha') {
+      let vet: string[] = ['A', 'B', 'C', 'D'];
+      this.addRem(e, vet);
+    }
+
+    if (e.target.value === 'tarde') {
+      let vet: string[] = ['E', 'E1', 'F', 'G', 'H', 'I'];
+      this.addRem(e, vet);
+    }
+
+    if (e.target.value === 'noite') {
+      let vet: string[] = ['J', 'K', 'L', 'M', 'N', 'P'];
+      this.addRem(e, vet);
+    }
 
     //atualiza com as disciplinas marcadas
     let cadeiras: string[] = [];
@@ -41,29 +61,17 @@ export class FiltroComponent implements OnInit {
     });
 
     //atualiza quadros
-    this.quadroService.montaQuadros(periodos, cadeiras);
-  }
-
-  mudar(periodo: PeriodoFiltro) {
-    if (periodo.checked) {
-      periodo.checked = false;
-    } else {
-      periodo.checked = true;
-    }
-  }
-
-  setTodos(e) {
-    this.periodos.forEach(p => {
-      p.checked = e.target.checked;
-    });
+    this.quadroService.montaQuadros(this.filtroPeriodo, cadeiras);
   }
 
   checkCadeira(e, cadeira: Aula) {
     cadeira.checked = e.target.checked;
+    this.atualizar(e);
   }
 
   checkTodasCadeira(e) {
     this.cadeiras.forEach(c => c.checked = e.target.checked);
+    this.atualizar(e);
   }
 
 }

@@ -180,7 +180,7 @@ export class QuadroService {
 
 }
 
-const PERIODOS = ['A', 'B', 'C', 'D', 'F', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P'];
+const PERIODOS = ['A', 'B', 'C', 'D', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P'];
 
 const DADOS = [
   {

@@ -1,23 +1,20 @@
 <div class="card">
   <div class="card-header">
     <span>Períodos</span>
-
-    <div style="float: right">
-      <input type="checkbox" name="checkTodos" checked (change)="setTodos($event)" />
-      <label for="checkTodos">Todos</label>
-    </div>
-
   </div>
-  <div class="card-block altura">
-    <div *ngFor="let periodo of periodos">
-      <label class="checkbox-linha">
-        <input type="checkbox" (change)="mudar(periodo)" [checked]="periodo.checked" data-md-icheck />
-        <strong>{{periodo.periodo}}</strong>
-      </label>
+  <div class="card-block altura clr-row">
+    <div class="clr-col-4">
+      <input type="checkbox" value="manha" (change)="atualizar($event)"/>
+      <span><strong>Manhã</strong></span> - <span>A, B, C, D</span>
     </div>
-  </div>
-  <div class="card-footer">
-    <button class="btn btn-sm btn-link" (click)="atualizar()">Atualizar</button>
+    <div class="clr-col-4">
+      <input type="checkbox" value="tarde" (change)="atualizar($event)" />
+      <span><strong>Tarde</strong></span> - <span>E, E1, F, G, H, I</span>
+    </div>
+    <div class="clr-col-4">
+      <input type="checkbox" value="noite" (change)="atualizar($event)" />
+      <span><strong>Noite</strong></span> - <span>J, K, L, M, N, P</span>
+    </div>
   </div>
 </div>
 
