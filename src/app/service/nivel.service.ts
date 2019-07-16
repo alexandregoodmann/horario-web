@@ -6,23 +6,37 @@ import { Disciplina } from '../model/disciplina';
 })
 export class NivelService {
 
+  private parseDisciplina(d): Disciplina {
+    let disc = new Disciplina();
+    disc.nivel = d.cdNivel;
+    disc.nmDisciplina = d.nmNome;
+    disc.sgCodCred = d.sgCodi + '-' + d.sgCred;
+    return disc;
+  }
+
   getCurriculo() {
 
-    let disciplinas: Disciplina[] = [];
+    let mapa: Map<number, Disciplina[]> = new Map<number, Disciplina[]>();
 
+    //monta a lista de disciplinas
     let lista = [...PLANEJAMENTO];
     lista.forEach(l => {
       l.planejamentoList.forEach(p => {
         p.disciplinaDtoList.forEach(d => {
-          let disc = new Disciplina();
-          disc.nivel = d.cdNivel;
-          disc.nmDisciplina = d.nmNome;
-          disc.sgCodCred = d.sgCodi + '-' + d.sgCred;
-          disciplinas.push(disc);
+
+          let disciplinas = mapa.get(d.cdNivel);
+          if (disciplinas === undefined) {
+            disciplinas = new Array<Disciplina>();
+          }
+          disciplinas.push(this.parseDisciplina(d));
+          mapa.set(d.cdNivel, disciplinas);
+
         });
       });
     });
 
+    //ordena a lisa por nível
+    /*
     disciplinas.sort(function (a, b) {
       if (a.nivel > b.nivel) {
         return 1;
@@ -31,8 +45,10 @@ export class NivelService {
         return -1;
       }
       return 0;
-    });
-    console.log(disciplinas);
+    });*/
+
+    //separa disciplinas por nível
+    console.log(mapa);
 
   }
 

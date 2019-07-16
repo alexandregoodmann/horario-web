@@ -1,14 +1,13 @@
-<div class="card">
-    <div class="card-block">
-        <h4 class="card-title">Title</h4>
-        <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, aut.
-        Nihil nemo, necessitatibus earum.
-        </p>
+<div class="clr-row" style="width: 100%">
+    <div *ngFor="let obj of mapa | keyvalue" class="clr-col-3 card">
+        <div class="card-block">
+            <h4 class="card-title">Nível {{obj.key}}</h4>
+            <div>
+                
+            </div>
+        </div>
+        <ul *ngFor="let disc of obj.value" class="list-group">
+            <li class="list-group-item"> <strong>{{disc.sgCodicred}}</strong> - {{disc.nmNome}}</li>
+        </ul>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item">Lorem ipsum dolor.</li>
-        <li class="list-group-item">Lorem ipsum dolor sit.</li>
-        <li class="list-group-item">Lorem ipsum.</li>
-    </ul>
 </div>

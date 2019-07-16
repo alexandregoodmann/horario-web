@@ -53,6 +53,7 @@ export class QuadroService {
   private criaOrigem(periodos: string[], cadeiras: string[]): void {
 
     let lista = [...DADOS];
+    
     this.cadeirasObservable.subscribe(data => {
       lista.forEach(dis => {
         if (cadeiras.includes(dis.sgCodicred)) {
