@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Aula } from '../model/aula';
+import { Disciplina } from '../model/disciplina';
 import { PeriodoFiltro } from '../model/periodo-filtro';
 import { Quadro } from '../model/quadro';
 
@@ -9,7 +9,7 @@ import { Quadro } from '../model/quadro';
 })
 export class QuadroService {
 
-  private origem: Aula[] = [];
+  private origem: Disciplina[] = [];
 
   private periodoBehavior = new BehaviorSubject<Array<PeriodoFiltro>>(new Array<PeriodoFiltro>());
   periodoObservable = this.periodoBehavior.asObservable();
@@ -17,7 +17,7 @@ export class QuadroService {
   private quadrosBehavior = new BehaviorSubject<Array<Quadro>>(new Array<Quadro>());
   quadrosObservable = this.quadrosBehavior.asObservable();
 
-  private cadeirasBehavior = new BehaviorSubject<Array<Aula>>(new Array<Aula>());
+  private cadeirasBehavior = new BehaviorSubject<Array<Disciplina>>(new Array<Disciplina>());
   cadeirasObservable = this.cadeirasBehavior.asObservable();
 
   constructor() {
@@ -26,10 +26,12 @@ export class QuadroService {
   }
 
   private listaCadeiras(): void {
+    
     let lista = [...DADOS];
-    let cadeiras: Aula[] = [];
+    
+    let cadeiras: Disciplina[] = [];
     lista.forEach(d => {
-      let cadeira = new Aula();
+      let cadeira = new Disciplina();
       cadeira.sgCodCred = d.sgCodicred;
       cadeira.nmDisciplina = d.nmNome;
       cadeiras.push(cadeira);
@@ -51,7 +53,6 @@ export class QuadroService {
   private criaOrigem(periodos: string[], cadeiras: string[]): void {
 
     let lista = [...DADOS];
-    
     this.cadeirasObservable.subscribe(data => {
       lista.forEach(dis => {
         if (cadeiras.includes(dis.sgCodicred)) {
@@ -63,7 +64,7 @@ export class QuadroService {
               }
             });
             if (add) {
-              let aula = new Aula();
+              let aula = new Disciplina();
               aula.codigoTurma = t.codigo;
               aula.horarios = t.horario;
               aula.nmDisciplina = dis.nmNome;
@@ -137,7 +138,7 @@ export class QuadroService {
     return quadro;
   }
 
-  private setAulas(quadro: Quadro, aula: Aula): void {
+  private setAulas(quadro: Quadro, aula: Disciplina): void {
     aula.horarios.forEach(h => {
       //2J 2K; 
       let pos = Number.parseInt(h.substring(0, 1)) - 2;

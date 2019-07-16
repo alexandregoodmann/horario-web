@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Aula } from '../model/aula';
+import { Disciplina } from '../model/disciplina';
 import { PeriodoFiltro } from '../model/periodo-filtro';
 import { QuadroService } from '../service/quadro.service';
 
@@ -11,7 +11,7 @@ import { QuadroService } from '../service/quadro.service';
 export class FiltroComponent implements OnInit {
 
   private periodos: PeriodoFiltro[] = [];
-  private cadeiras: Aula[] = [];
+  private cadeiras: Disciplina[] = [];
   private filtroPeriodo: string[] = [];
 
   constructor(private quadroService: QuadroService) { }
@@ -64,7 +64,7 @@ export class FiltroComponent implements OnInit {
     this.quadroService.montaQuadros(this.filtroPeriodo, cadeiras);
   }
 
-  checkCadeira(e, cadeira: Aula) {
+  checkCadeira(e, cadeira: Disciplina) {
     cadeira.checked = e.target.checked;
     this.atualizar(e);
   }

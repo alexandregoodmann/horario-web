@@ -1,9 +1,9 @@
-import { Aula } from "./aula";
+import { Disciplina } from "./disciplina";
 import { Periodo } from "./periodo";
 
 export class Quadro {
 
-    disciplinas: Map<String, Aula> = new Map<String, Aula>();
+    disciplinas: Map<String, Disciplina> = new Map<String, Disciplina>();
     periodos: Periodo[] = []
     totalCredito: number;
     totalDisciplinas: number;

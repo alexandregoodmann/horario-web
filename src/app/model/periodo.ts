@@ -1,11 +1,11 @@
-import { Aula } from "./aula";
+import { Disciplina } from "./disciplina";
 
 export class Periodo {
 
     horarios: Map<string, string> = new Map<string, string>();
     periodo: string = '';
     horario: string;
-    aulas: Aula[] = Array<Aula>(5);
+    aulas: Disciplina[] = Array<Disciplina>(5);
 
     constructor() {
         this.horarios.set('A', '8h');

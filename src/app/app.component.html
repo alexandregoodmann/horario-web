@@ -5,19 +5,34 @@
   </header>
 
   <div class="content-container">
-    
-    <div class="clr-row" style="width: 100%">
-      <div class="clr-col-4">
-        <div style="padding: 0 0 0 15px">
-          <app-filtro></app-filtro>
-        </div>
-      </div>
-      <div class="clr-col-8">
-        <div style="padding: 0 15px 0 0">
-          <app-quadro></app-quadro>
-        </div>
-      </div>
-    </div>
+
+    <!-- TABS -->
+    <clr-tabs style="width: 100%">
+      <clr-tab>
+        <button clrTabLink id="link1">Grade de Matrícula</button>
+        <clr-tab-content style="width: 100%" id="content1" *clrIfActive="true">
+          <div class="clr-row" style="width: 100%">
+            <div class="clr-col-4">
+              <div style="padding: 0 0 0 15px">
+                <app-filtro></app-filtro>
+              </div>
+            </div>
+            <div class="clr-col-8">
+              <div style="padding: 0 15px 0 0">
+                <app-quadro></app-quadro>
+              </div>
+            </div>
+          </div>
+        </clr-tab-content>
+      </clr-tab>
+
+      <clr-tab>
+        <button clrTabLink>Currículo do Curso</button>
+        <clr-tab-content *clrIfActive>
+          <app-curriculo></app-curriculo>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
 
   </div>
 </div>

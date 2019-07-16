@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Aula } from '../model/aula';
+import { Disciplina } from '../model/disciplina';
 import { Quadro } from '../model/quadro';
 import { QuadroService } from '../service/quadro.service';
 
@@ -20,7 +20,7 @@ export class QuadroComponent implements OnInit {
     });
   }
 
-  getClass(aula: Aula) {
+  getClass(aula: Disciplina) {
     if (aula.vagas === 0) {
       return 'sem-vagas';
     }

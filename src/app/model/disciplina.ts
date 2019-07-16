@@ -1,8 +1,9 @@
-export class Aula {
+export class Disciplina {
     sgCodCred: string;
     nmDisciplina: string;
     codigoTurma: number;
     horarios: string[];
     vagas: number;
     checked: boolean = true;
+    nivel: number;
 }

@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuadroComponent } from './quadro/quadro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FiltroComponent } from './filtro/filtro.component';
+import { CurriculoComponent } from './curriculo/curriculo.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuadroComponent,
     FiltroComponent,
+    CurriculoComponent,
   ],
   imports: [
     BrowserModule,
