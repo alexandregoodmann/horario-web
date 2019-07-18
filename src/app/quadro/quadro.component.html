@@ -22,12 +22,10 @@
       <td *ngFor="let aula of periodo.aulas">
         <div *ngIf="aula !== undfined" [class]="getClass(aula)">
           <strong>
-            <span>{{aula.sgCodCred}}</span>
+            <span>{{aula.sgCodCred}} | N{{aula.nivel}}</span>
           </strong>
           <br>
           <span>{{aula.nmDisciplina}}</span>
-          <br>
-          <span>{{aula.horarios}}</span>
         </div>
       </td>
     </tr>

@@ -1,3 +1,5 @@
+import { turma } from "./turma";
+
 export class Disciplina {
     sgCodCred: string;
     nmDisciplina: string;
@@ -6,4 +8,5 @@ export class Disciplina {
     vagas: number;
     checked: boolean = true;
     nivel: number;
+    turmas: any[];
 }

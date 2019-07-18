@@ -1,0 +1,10 @@
+.cursado {
+    color: rgb(184, 181, 181);
+    text-decoration:line-through;
+    font-size: .541667rem;
+}
+
+.pendente {
+    color: rgb(65, 65, 65);
+    font-size: .541667rem;
+}

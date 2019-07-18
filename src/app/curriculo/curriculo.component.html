@@ -7,7 +7,7 @@
             </div>
         </div>
         <ul *ngFor="let disc of obj.value" class="list-group">
-            <li class="list-group-item"> <strong>{{disc.sgCodicred}}</strong> - {{disc.nmNome}}</li>
+            <li [class]="getClass(disc)"> <strong>{{disc.sgCodicred}}</strong> - {{disc.nmNome}}</li>
         </ul>
     </div>
 </div>

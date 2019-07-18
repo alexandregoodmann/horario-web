@@ -4,7 +4,7 @@
   </div>
   <div class="card-block altura clr-row">
     <div class="clr-col-4">
-      <input type="checkbox" value="manha" (change)="atualizar($event)"/>
+      <input type="checkbox" value="manha" (change)="atualizar($event)" />
       <span><strong>Manhã</strong></span> - <span>A, B, C, D</span>
     </div>
     <div class="clr-col-4">
@@ -29,6 +29,7 @@
       <th><input type="checkbox" checked data-md-icheck (change)="checkTodasCadeira($event)" /></th>
       <th>Código</th>
       <th>Descrição</th>
+      <th>Nível</th>
     </tr>
   </thead>
   <tbody>
@@ -39,7 +40,13 @@
         </label>
       </td>
       <td>{{cadeira.sgCodCred}}</td>
-      <td style="text-align: left">{{cadeira.nmDisciplina}}</td>
+      <td style="text-align: left">
+        {{cadeira.nmDisciplina}}
+        <li *ngFor="let turma of cadeira.turmas">
+          {{turma.horario}}
+        </li>
+      </td>
+      <td>{{cadeira.nivel}}</td>
     </tr>
   </tbody>
 

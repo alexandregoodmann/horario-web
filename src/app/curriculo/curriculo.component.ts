@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NivelService } from '../service/nivel.service';
-import { getNumberOfCurrencyDigits } from '@angular/common';
 
 @Component({
   selector: 'app-curriculo',
@@ -20,6 +19,16 @@ export class CurriculoComponent implements OnInit {
       this.mapa.set(i, CURRICULO[i]);
     }
     console.log(this.mapa);
+  }
+
+  getClass(disc: any) {
+    let clazz = 'list-group-item';
+    if (disc.stStatus === 'CURSADA') {
+      clazz = clazz + ' cursado';
+    } else {
+      clazz = clazz + ' pendente';
+    }
+    return clazz;
   }
 
 }
