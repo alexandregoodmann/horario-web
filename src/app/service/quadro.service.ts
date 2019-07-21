@@ -70,7 +70,6 @@ export class QuadroService {
         this.cadeirasObservable.subscribe(data => {
             lista.forEach(dis => {
                 if (cadeiras.includes(dis.sgCodicred)) {
-
                     dis.turmas.forEach(t => {
                         let add: boolean = false;
                         t.horario.forEach(h => {
@@ -93,6 +92,7 @@ export class QuadroService {
             });
         });
 
+        //ordena lista por nível
         this.origem.sort(function (a, b) {
             if (a.nivel > b.nivel) {
                 return 1;
@@ -178,7 +178,7 @@ export class QuadroService {
         });
     }
 
-    private todasLivres(quadro: Quadro, horarios: string[]): boolean {
+    todasLivres(quadro: Quadro, horarios: string[]): boolean {
 
         let livre: boolean = true;
 
