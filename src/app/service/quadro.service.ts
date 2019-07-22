@@ -27,23 +27,23 @@ export class QuadroService {
 
     private listaCadeiras(): void {
 
-        let lista = [...DADOS];
+        let lista = [...LISTA];
 
         let cadeiras: Disciplina[] = [];
         lista.forEach(d => {
             let cadeira = new Disciplina();
-            cadeira.sgCodCred = d.sgCodicred;
+            cadeira.sgCodicred = d.sgCodicred;
             cadeira.nmDisciplina = d.nmNome;
-            cadeira.nivel = d.cdNivel;
+            cadeira.cdNivel = d.cdNivel;
             cadeira.turmas = d.turmas;
             cadeiras.push(cadeira);
         });
 
         cadeiras.sort(function (a, b) {
-            if (a.nivel > b.nivel) {
+            if (a.cdNivel > b.cdNivel) {
                 return 1;
             }
-            if (a.nivel < b.nivel) {
+            if (a.cdNivel < b.cdNivel) {
                 return -1;
             }
             return 0;
@@ -65,39 +65,38 @@ export class QuadroService {
 
     private criaOrigem(periodos: string[], cadeiras: string[]): void {
 
-        let lista = [...DADOS];
+        let lista = [...LISTA];
 
-        this.cadeirasObservable.subscribe(data => {
-            lista.forEach(dis => {
-                if (cadeiras.includes(dis.sgCodicred)) {
-                    dis.turmas.forEach(t => {
-                        let add: boolean = false;
-                        t.horario.forEach(h => {
-                            if (periodos.includes(h.substring(1))) {
-                                add = true;
-                            }
-                        });
-                        if (add) {
-                            let aula = new Disciplina();
-                            aula.codigoTurma = t.codigo;
-                            aula.horarios = t.horario;
-                            aula.nmDisciplina = dis.nmNome;
-                            aula.sgCodCred = dis.sgCodicred;
-                            aula.vagas = t.vagas;
-                            aula.nivel = dis.cdNivel;
-                            this.origem.push(aula);
+        lista.forEach(disciplina => {
+            if (cadeiras.includes(disciplina.sgCodicred)) {
+                
+                disciplina.turmas.forEach(t => {
+                    let add: boolean = false;
+                    t.horario.forEach(h => {
+                        if (periodos.includes(h.substring(1))) {
+                            add = true;
                         }
                     });
-                }
-            });
+                    if (add) {
+                        let aula = new Disciplina();
+                        aula.codigoTurma = t.codigo;
+                        aula.horarios = t.horario;
+                        aula.nmDisciplina = disciplina.nmNome;
+                        aula.sgCodicred = disciplina.sgCodicred;
+                        aula.vagas = t.vagas;
+                        aula.cdNivel = disciplina.cdNivel;
+                        this.origem.push(aula);
+                    }
+                });
+            }
         });
 
         //ordena lista por nível
         this.origem.sort(function (a, b) {
-            if (a.nivel > b.nivel) {
+            if (a.cdNivel > b.cdNivel) {
                 return 1;
             }
-            if (a.nivel < b.nivel) {
+            if (a.cdNivel < b.cdNivel) {
                 return -1;
             }
             return 0;
@@ -133,11 +132,11 @@ export class QuadroService {
 
         this.origem.forEach(turma => {
             //se ainda não estiver no quadro
-            if (quadro.disciplinas.get(turma.sgCodCred) === undefined) {
+            if (quadro.disciplinas.get(turma.sgCodicred) === undefined) {
                 //se todos os horários desta turma estão livres
                 if (this.todasLivres(quadro, turma.horarios)) {
                     //adiciona no quadro as turmas
-                    quadro.disciplinas.set(turma.sgCodCred, turma);
+                    quadro.disciplinas.set(turma.sgCodicred, turma);
                     this.setAulas(quadro, turma);
                     remover.push(this.origem.indexOf(turma));
                 }
@@ -209,7 +208,7 @@ export class QuadroService {
 
 const PERIODOS = ['A', 'B', 'C', 'D', 'E', 'E1', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P'];
 
-const DADOS = [
+const LISTA = [
     {
         "retorno": null,
         "mensagem": null,

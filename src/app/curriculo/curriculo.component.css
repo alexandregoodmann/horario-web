@@ -8,3 +8,11 @@
     color: rgb(65, 65, 65);
     font-size: .541667rem;
 }
+
+.marcado{
+    background-color: antiquewhite;
+}
+
+.selecionado{
+    background-color: cadetblue;
+}

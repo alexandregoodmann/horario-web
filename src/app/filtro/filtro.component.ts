@@ -57,7 +57,7 @@ export class FiltroComponent implements OnInit {
     let cadeiras: string[] = [];
     let cad = this.cadeiras.filter(o => o.checked);
     cad.forEach(c => {
-      cadeiras.push(c.sgCodCred);
+      cadeiras.push(c.sgCodicred);
     });
 
     //atualiza quadros

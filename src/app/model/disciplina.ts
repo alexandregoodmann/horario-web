@@ -1,12 +1,13 @@
-import { turma } from "./turma";
 
 export class Disciplina {
-    sgCodCred: string;
+    sgCodicred: string;
     nmDisciplina: string;
     codigoTurma: number;
     horarios: string[];
     vagas: number;
     checked: boolean = true;
-    nivel: number;
+    cdNivel: number;
     turmas: any[];
+    clazz: string;
+    stStatus: string;
 }
