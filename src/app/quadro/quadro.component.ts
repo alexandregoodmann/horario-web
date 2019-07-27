@@ -12,7 +12,7 @@ export class QuadroComponent implements OnInit {
 
   private quadros: Quadro[] = [];
   private disciplinas: Disciplina[] = [];
-  private sugestoes: string[] = [];
+  private sugestoes: Map<String, Disciplina> = new Map<String, Disciplina>();
 
   constructor(private quadroService: QuadroService) { }
 
@@ -29,21 +29,31 @@ export class QuadroComponent implements OnInit {
     }
   }
 
-  sugestao(quadro, dia, per) {
+  sugestao(dia, per) {
+
     let periodo = dia + 2 + '' + per;
-    this.sugestoes = [];
+    this.sugestoes = new Map<String, Disciplina>();
+
     this.disciplinas.forEach(d => {
-      d.turmas.forEach(t => {
-        if (t.horario.includes(periodo) && this.quadroService.todasLivres(quadro, t.horario)) {
-          if (!this.sugestoes.includes(d.nmDisciplina)) {
-            this.sugestoes.push(d.nmDisciplina);
-          }
+
+      let clone = { ...d };
+      clone.turmas = [];
+      let cloneTurmas: any[] = [...d.turmas];
+
+      let encontrou: boolean = false;
+      cloneTurmas.forEach(t => {
+        if (t.horario.includes(periodo)) {
+          encontrou = true;
+          clone.turmas.push(t);
         }
-      })
+      });
+
+      if (encontrou && this.sugestoes.get(d.sgCodicred) === undefined) {
+        this.sugestoes.set(d.sgCodicred, clone);
+      }
+
     });
-    if (this.sugestoes.length === 0) {
-      this.sugestoes.push('Sem Sugestão');
-    }
+
   }
 
   remover(quadro: Quadro, aula: Disciplina) {
@@ -54,4 +64,8 @@ export class QuadroComponent implements OnInit {
     });
   }
 
+  add(quadro: Quadro, aula: Disciplina) {
+    this.quadroService.setAulas(quadro, aula)
+  }
+  
 }

@@ -163,7 +163,10 @@ export class QuadroService {
         return quadro;
     }
 
-    private setAulas(quadro: Quadro, aula: Disciplina): void {
+    setAulas(quadro: Quadro, aula: Disciplina): void {
+        if (aula.horarios === undefined){
+            aula.horarios = aula.turmas[0].horario;
+        }
         aula.horarios.forEach(h => {
             //2J 2K; 
             let pos = Number.parseInt(h.substring(0, 1)) - 2;

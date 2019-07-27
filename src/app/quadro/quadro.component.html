@@ -29,12 +29,23 @@
           <br>
           <clr-icon shape="trash" (click)="remover(quadro, aula)"></clr-icon>
         </div>
-        
+
         <!-- BALAO DE SUGESTAO -->
-        <clr-signpost *ngIf="aula === undfined" (click)="sugestao(quadro, i, periodo.periodo)">
+        <clr-signpost *ngIf="aula === undfined" (click)="sugestao(i, periodo.periodo)">
           <clr-icon shape="tasks" clrSignpostTrigger></clr-icon>
           <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
-            <li *ngFor="let s of sugestoes">{{s}}</li> 
+
+            <div *ngFor="let obj of sugestoes | keyvalue" style="text-align: left;">
+              <ul>
+                <strong>{{obj.value.nmDisciplina}}</strong>
+                <li *ngFor="let t of obj.value.turmas">
+                  {{t.horario}}
+                  <button (click)="add(quadro, obj.value)">add</button>
+                </li>
+              </ul>
+              <br>
+            </div>
+
           </clr-signpost-content>
         </clr-signpost>
 
