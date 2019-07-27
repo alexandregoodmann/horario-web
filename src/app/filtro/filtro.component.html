@@ -39,14 +39,14 @@
           <input type="checkbox" [checked]="cadeira.checked" data-md-icheck (change)="checkCadeira($event, cadeira)" />
         </label>
       </td>
-      <td>{{cadeira.sgCodCred}}</td>
+      <td>{{cadeira.sgCodicred}}</td>
       <td style="text-align: left">
         {{cadeira.nmDisciplina}}
         <li *ngFor="let turma of cadeira.turmas">
           {{turma.horario}}
         </li>
       </td>
-      <td>{{cadeira.nivel}}</td>
+      <td>{{cadeira.cdNivel}}</td>
     </tr>
   </tbody>
 

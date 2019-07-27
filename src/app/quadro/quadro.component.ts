@@ -41,6 +41,9 @@ export class QuadroComponent implements OnInit {
         }
       })
     });
+    if (this.sugestoes.length === 0) {
+      this.sugestoes.push('Sem Sugestão');
+    }
   }
 
   remover(quadro: Quadro, aula: Disciplina) {

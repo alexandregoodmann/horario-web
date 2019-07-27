@@ -240,6 +240,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 722,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "2LM 4NP ",
                 "horario": [
@@ -255,17 +256,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 31,
+                "vagasVeterano": 31,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "207",
-                "professores": null,
+                "professores": [
+                    "SERGIO BOSCATO GARCIA"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -294,9 +299,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 26927,
-                "idTurmaAluno": 10413,
+                "idTurmaAluno": 0,
                 "idTurma": 2286,
-                "stMatricula": "R",
+                "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 670,
                 "txHorario": "4ABCD ",
                 "horario": [
@@ -311,17 +317,22 @@ const LISTA = [
                     "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 08:00 às 11:30",
-                "vagas": 5,
-                "vagasVeterano": 25,
+                "vagas": 0,
+                "vagasVeterano": 11,
                 "vagasBixo": 0,
-                "vagasExtra": 5,
+                "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": true,
+                "incluido": null,
                 "nrPredio": "15A",
+                "txJustificativa": null,
                 "nrSala": "206",
-                "professores": null,
+                "professores": [
+                    "LEO FERNANDO KRAS JOAS",
+                    " LUCAS BONACINA ROLDAN"
+                ],
                 "tpVaga": "E",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -356,6 +367,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 473,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "3LM ",
                 "horario": [
@@ -370,17 +382,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 32,
+                "vagasVeterano": 32,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "307",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -412,9 +428,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 10597,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 40279,
                 "idTurma": 272,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 380,
                 "txHorario": "4LM 6NP ",
                 "horario": [
@@ -430,17 +447,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 19:30 às 21:00 e Sexta-feira, das 21:15 às 22:45",
-                "vagas": 30,
-                "vagasVeterano": 30,
+                "vagas": 13,
+                "vagasVeterano": 13,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "30F",
+                "txJustificativa": null,
                 "nrSala": "119",
-                "professores": null,
+                "professores": [
+                    "ROBERTO MOREIRA SCHROEDER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -469,9 +490,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 27152,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 33263,
                 "idTurma": 2117,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 670,
                 "txHorario": "6ABCD ",
                 "horario": [
@@ -486,17 +508,22 @@ const LISTA = [
                     "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 08:00 às 11:30",
-                "vagas": 5,
-                "vagasVeterano": 25,
+                "vagas": 0,
+                "vagasVeterano": 7,
                 "vagasBixo": 0,
-                "vagasExtra": 5,
+                "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "15A",
+                "txJustificativa": null,
                 "nrSala": "214",
-                "professores": null,
+                "professores": [
+                    "LUIS HUMBERTO DE M. VILLWOCK",
+                    " MAIRA DE CASSIA PETRINI"
+                ],
                 "tpVaga": "E",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -525,9 +552,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 26898,
-                "idTurmaAluno": 10415,
+                "idTurmaAluno": 0,
                 "idTurma": 2469,
-                "stMatricula": "R",
+                "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 670,
                 "txHorario": "5ABCD ",
                 "horario": [
@@ -542,17 +570,22 @@ const LISTA = [
                     "2553-ADMINISTRAÇÃO - LF INOVAÇÃO E EMPREENDEDORISMO"
                 ],
                 "txHorarioExtenso": "Quinta-feira, das 08:00 às 11:30",
-                "vagas": 5,
-                "vagasVeterano": 25,
+                "vagas": 0,
+                "vagasVeterano": 9,
                 "vagasBixo": 0,
-                "vagasExtra": 5,
+                "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": true,
+                "incluido": null,
                 "nrPredio": "15A",
+                "txJustificativa": null,
                 "nrSala": "110",
-                "professores": null,
+                "professores": [
+                    "LORAINE ALESSANDRA B. MULLER",
+                    " NAIRA MARIA LOBRAICO LIBERMANN"
+                ],
                 "tpVaga": "E",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -584,9 +617,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 6878,
-                "idTurmaAluno": 1354,
+                "idTurmaAluno": 40364,
                 "idTurma": 170,
-                "stMatricula": "R",
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 470,
                 "txHorario": "3LM ",
                 "horario": [
@@ -599,17 +633,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 26,
+                "vagasVeterano": 26,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": true,
                 "nrPredio": "32A",
+                "txJustificativa": null,
                 "nrSala": "303",
-                "professores": null,
+                "professores": [
+                    "ODILON FRANCISCO PAVON DUARTE"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -643,6 +681,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 2182,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 480,
                 "txHorario": "2JK ",
                 "horario": [
@@ -665,23 +704,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 10,
+                "vagasVeterano": 10,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "210",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 27828,
                 "idTurmaAluno": 0,
                 "idTurma": 2185,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 450,
                 "txHorario": "3NP ",
                 "horario": [
@@ -704,23 +748,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 25,
+                "vagasVeterano": 25,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "205",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 27828,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 130033,
                 "idTurma": 2183,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 470,
                 "txHorario": "6LM ",
                 "horario": [
@@ -743,23 +792,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 23,
+                "vagasVeterano": 23,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "203",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 27828,
                 "idTurmaAluno": 0,
                 "idTurma": 2186,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 390,
                 "txHorario": "6JK ",
                 "horario": [
@@ -782,23 +836,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 17:35 às 19:29",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 30,
+                "vagasVeterano": 30,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "207",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 27828,
                 "idTurmaAluno": 0,
                 "idTurma": 2184,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 460,
                 "txHorario": "5LM ",
                 "horario": [
@@ -821,23 +880,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quinta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 18,
+                "vagasVeterano": 18,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "205",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 27828,
                 "idTurmaAluno": 0,
                 "idTurma": 2187,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 350,
                 "txHorario": "4NP ",
                 "horario": [
@@ -860,17 +924,85 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 28,
+                "vagasVeterano": 28,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "205",
-                "professores": null,
+                "professores": [
+                    "PETER CAUBI MACHEMER"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
+            }
+        ]
+    },
+    {
+        "retorno": null,
+        "mensagem": null,
+        "cdDisciplina": 10583,
+        "nmNome": "Resistência Dos Materiais Ii - Em",
+        "sgCodicred": "4423G-04",
+        "sgCodi": null,
+        "sgCred": null,
+        "cdNivel": 6,
+        "tipoDisciplina": null,
+        "idTipoDisciplina": 1,
+        "nrCreditosPre": 0,
+        "stStatus": null,
+        "txCursado": null,
+        "txPlanejado": null,
+        "txCorequisito": null,
+        "cdCoRequisito": null,
+        "disciplinasPreRequisito": "",
+        "disciplinasSubstitutas": "\n44201-04 - Resistência dos Materiais I\n44202-04 - Resistência dos Materiais II",
+        "disciplinasCoRequisitos": "",
+        "disciplinasRequisitosEspeciais": "\n4421R-04 - Resistência dos Materiais I - Em",
+        "tipoRequisito": [
+            "ESP",
+            "SUB"
+        ],
+        "turmas": [
+            {
+                "cdDisciplina": 10583,
+                "idTurmaAluno": 0,
+                "idTurma": 472,
+                "stMatricula": null,
+                "cdVinculacao": null,
+                "codigo": 460,
+                "txHorario": "4JK 5JK ",
+                "horario": [
+                    "4J",
+                    "4K",
+                    "5J",
+                    "5K"
+                ],
+                "tipo": "",
+                "txDescricaoTipo": "Pres",
+                "txTurmaCurriculo": [
+                    "4452-ENGENHARIA MECÂNICA"
+                ],
+                "txHorarioExtenso": "Quarta-feira, das 17:35 às 19:29 e Quinta-feira, das 17:35 às 19:29",
+                "vagas": 15,
+                "vagasVeterano": 15,
+                "vagasBixo": 0,
+                "vagasExtra": 0,
+                "vagasCentral": 0,
+                "incluido": null,
+                "nrPredio": "30B",
+                "txJustificativa": null,
+                "nrSala": "210",
+                "professores": [
+                    "PAULO SCHMELING KUNZLER"
+                ],
+                "tpVaga": "V",
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -904,6 +1036,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 505,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 480,
                 "txHorario": "6JK ",
                 "horario": [
@@ -930,23 +1063,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 17:35 às 19:29",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 8,
+                "vagasVeterano": 8,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "32A",
+                "txJustificativa": null,
                 "nrSala": "307",
-                "professores": null,
+                "professores": [
+                    "RAFAEL ROCO DE ARAUJO"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 7013,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 40372,
                 "idTurma": 506,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 470,
                 "txHorario": "5NP ",
                 "horario": [
@@ -973,23 +1111,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quinta-feira, das 21:15 às 22:45",
-                "vagas": 57,
-                "vagasVeterano": 57,
+                "vagas": 11,
+                "vagasVeterano": 11,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "204",
-                "professores": null,
+                "professores": [
+                    "EDSON ZILIO SILVA"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 7013,
                 "idTurmaAluno": 0,
                 "idTurma": 504,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 490,
                 "txHorario": "4LM ",
                 "horario": [
@@ -1016,17 +1159,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 15,
+                "vagasVeterano": 15,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30B",
+                "txJustificativa": null,
                 "nrSala": "210",
-                "professores": null,
+                "professores": [
+                    "RAFAEL ROCO DE ARAUJO"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -1063,6 +1210,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 191,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "2LM 4NP ",
                 "horario": [
@@ -1078,149 +1226,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 46,
+                "vagasVeterano": 46,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30B",
+                "txJustificativa": null,
                 "nrSala": "203",
-                "professores": null,
+                "professores": [
+                    "RUBEM DA CUNHA REIS"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
-            }
-        ]
-    },
-    {
-        "retorno": null,
-        "mensagem": null,
-        "cdDisciplina": 10606,
-        "nmNome": "Controle Hidráulico E Pneumático",
-        "sgCodicred": "4445R-04",
-        "sgCodi": null,
-        "sgCred": null,
-        "cdNivel": 9,
-        "tipoDisciplina": null,
-        "idTipoDisciplina": 1,
-        "nrCreditosPre": 0,
-        "stStatus": null,
-        "txCursado": null,
-        "txPlanejado": null,
-        "txCorequisito": [
-            "6712"
-        ],
-        "cdCoRequisito": null,
-        "disciplinasPreRequisito": "",
-        "disciplinasSubstitutas": "",
-        "disciplinasCoRequisitos": "\n4444L-04 - Mecânica dos Fluidos",
-        "disciplinasRequisitosEspeciais": "",
-        "tipoRequisito": [
-            "COR",
-            "SUB"
-        ],
-        "turmas": [
-            {
-                "cdDisciplina": 10606,
-                "idTurmaAluno": 0,
-                "idTurma": 281,
-                "stMatricula": null,
-                "codigo": 370,
-                "txHorario": "2LM 3LM ",
-                "horario": [
-                    "2L",
-                    "2M",
-                    "3L",
-                    "3M"
-                ],
-                "tipo": "",
-                "txDescricaoTipo": "Pres",
-                "txTurmaCurriculo": [
-                    "4447-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
-                    "4455-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
-                    "4442-ENGENHARIA MECÂNICA",
-                    "4452-ENGENHARIA MECÂNICA"
-                ],
-                "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Terça-feira, das 19:30 às 21:00",
-                "vagas": 20,
-                "vagasVeterano": 20,
-                "vagasBixo": 0,
-                "vagasExtra": 0,
-                "vagasCentral": 0,
-                "incluido": null,
-                "nrPredio": "30F",
-                "nrSala": "117",
-                "professores": null,
-                "tpVaga": "V",
-                "tpTurma": "N"
-            },
-            {
-                "cdDisciplina": 10606,
-                "idTurmaAluno": 0,
-                "idTurma": 282,
-                "stMatricula": null,
-                "codigo": 360,
-                "txHorario": "3JKLM ",
-                "horario": [
-                    "3J",
-                    "3K",
-                    "3L",
-                    "3M"
-                ],
-                "tipo": "",
-                "txDescricaoTipo": "Pres",
-                "txTurmaCurriculo": [
-                    "4447-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
-                    "4455-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
-                    "4442-ENGENHARIA MECÂNICA",
-                    "4452-ENGENHARIA MECÂNICA"
-                ],
-                "txHorarioExtenso": "Terça-feira, das 17:35 às 21:00",
-                "vagas": 20,
-                "vagasVeterano": 20,
-                "vagasBixo": 0,
-                "vagasExtra": 0,
-                "vagasCentral": 0,
-                "incluido": null,
-                "nrPredio": "30F",
-                "nrSala": "117",
-                "professores": null,
-                "tpVaga": "V",
-                "tpTurma": "N"
-            },
-            {
-                "cdDisciplina": 10606,
-                "idTurmaAluno": 0,
-                "idTurma": 283,
-                "stMatricula": null,
-                "codigo": 350,
-                "txHorario": "3LM 4NP ",
-                "horario": [
-                    "3L",
-                    "3M",
-                    "4N",
-                    "4P"
-                ],
-                "tipo": "",
-                "txDescricaoTipo": "Pres",
-                "txTurmaCurriculo": [
-                    "4447-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
-                    "4455-ENGENHARIA DE CONTROLE E AUTOMAÇÃO",
-                    "4442-ENGENHARIA MECÂNICA",
-                    "4452-ENGENHARIA MECÂNICA"
-                ],
-                "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 20,
-                "vagasVeterano": 20,
-                "vagasBixo": 0,
-                "vagasExtra": 0,
-                "vagasCentral": 0,
-                "incluido": null,
-                "nrPredio": "30D",
-                "nrSala": "203",
-                "professores": null,
-                "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -1254,6 +1274,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 638,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 128,
                 "txHorario": "2EE1 4EE1 ",
                 "horario": [
@@ -1296,23 +1317,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 11:35 às  e Quarta-feira, das 11:35 às ",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 4,
+                "vagasVeterano": 3,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
-                "vagasCentral": 0,
+                "vagasCentral": 1,
                 "incluido": null,
                 "nrPredio": "32A",
+                "txJustificativa": null,
                 "nrSala": "313",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 626,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 257,
                 "txHorario": "6LMNP ",
                 "horario": [
@@ -1330,22 +1356,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 19:30 às 22:45",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 1,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "08A",
+                "txJustificativa": null,
                 "nrSala": "231",
-                "professores": null,
+                "professores": [
+                    "BLASIO GUIDO JACOBI"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 620,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 450,
                 "txHorario": "6LMNP ",
                 "horario": [
@@ -1388,23 +1419,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 19:30 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 17,
+                "vagasVeterano": 17,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "402",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 625,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 259,
                 "txHorario": "2JK 4JK ",
                 "horario": [
@@ -1440,22 +1476,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29 e Quarta-feira, das 17:35 às 19:29",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 12,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "07A",
+                "txJustificativa": null,
                 "nrSala": "314",
-                "professores": null,
+                "professores": [
+                    "BRUNO ODELIO BIRCK"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 641,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 390,
                 "txHorario": "4ABCD ",
                 "horario": [
@@ -1471,22 +1512,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 08:00 às 11:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 13,
                 "vagasBixo": 0,
-                "vagasExtra": 0,
+                "vagasExtra": 30,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "403",
-                "professores": null,
+                "professores": [
+                    "PEDRO ALBERTO KUNRATH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 619,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 458,
                 "txHorario": "3FGHI ",
                 "horario": [
@@ -1502,22 +1548,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 14:00 às 17:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 44,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "712",
-                "professores": null,
+                "professores": [
+                    "CLAUDIO VICENTE IMMIG"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 618,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 459,
                 "txHorario": "3AB 5CD ",
                 "horario": [
@@ -1533,22 +1584,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 08:00 às 09:40 e Quinta-feira, das 09:50 às 11:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 46,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "604",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 617,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 460,
                 "txHorario": "5LMNP ",
                 "horario": [
@@ -1591,23 +1647,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Quinta-feira, das 19:30 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 0,
+                "vagasVeterano": 0,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "413",
-                "professores": null,
+                "professores": [
+                    "CLAUDIO VICENTE IMMIG"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 637,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 140,
                 "txHorario": "2LM 4LM ",
                 "horario": [
@@ -1650,23 +1711,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 1,
+                "vagasVeterano": 1,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "408",
-                "professores": null,
+                "professores": [
+                    "BRUNO ODELIO BIRCK"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 624,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 269,
                 "txHorario": "3JK 5JK ",
                 "horario": [
@@ -1702,22 +1768,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 17:35 às 19:29 e Quinta-feira, das 17:35 às 19:29",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 12,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "07A",
+                "txJustificativa": null,
                 "nrSala": "314",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 636,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 145,
                 "txHorario": "2LMNP ",
                 "horario": [
@@ -1735,23 +1806,28 @@ const LISTA = [
                     "250X-ADMINISTRAÇÃO / LF MARKETING"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 22:45",
-                "vagas": 10,
-                "vagasVeterano": 50,
+                "vagas": 0,
+                "vagasVeterano": 13,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
-                "vagasCentral": 10,
+                "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "608",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 616,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 469,
                 "txHorario": "3CD 5AB ",
                 "horario": [
@@ -1767,22 +1843,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 09:50 às 11:30 e Quinta-feira, das 08:00 às 09:40",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 18,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "514",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 635,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 149,
                 "txHorario": "6FGHI ",
                 "horario": [
@@ -1801,22 +1882,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 14:00 às 17:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 26,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "09A",
+                "txJustificativa": null,
                 "nrSala": "213",
-                "professores": null,
+                "professores": [
+                    "LUIS EVANDRO HINRICHSEN"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 615,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 470,
                 "txHorario": "3NP 4NP ",
                 "horario": [
@@ -1859,23 +1945,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 21:15 às 22:45 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 29,
+                "vagasVeterano": 29,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "404",
-                "professores": null,
+                "professores": [
+                    "BRUNO ODELIO BIRCK"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 40365,
                 "idTurma": 634,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 150,
                 "txHorario": "3JK 5JK ",
                 "horario": [
@@ -1918,23 +2009,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 17:35 às 19:29 e Quinta-feira, das 17:35 às 19:29",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 7,
+                "vagasVeterano": 7,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "402",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 623,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 347,
                 "txHorario": "2JK 5JK ",
                 "horario": [
@@ -1946,26 +2042,37 @@ const LISTA = [
                 "tipo": "",
                 "txDescricaoTipo": "Pres",
                 "txTurmaCurriculo": [
-                    "1311-PSICOLOGIA"
+                    "1303-PSICOLOGIA",
+                    "1306-PSICOLOGIA",
+                    "1308-PSICOLOGIA",
+                    "1310-PSICOLOGIA",
+                    "1311-PSICOLOGIA",
+                    "1305-PSICOLOGIA - NOITE",
+                    "1307-PSICOLOGIA - NOITE"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29 e Quinta-feira, das 17:35 às 19:29",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 17,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "606",
-                "professores": null,
+                "professores": [
+                    "LUIS EVANDRO HINRICHSEN"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 612,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 670,
                 "txHorario": "2ABCD ",
                 "horario": [
@@ -1981,23 +2088,28 @@ const LISTA = [
                     "2556-CIÊNCIAS ECONÔMICAS - LF FINANÇAS"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 08:00 às 11:30",
-                "vagas": 10,
-                "vagasVeterano": 50,
+                "vagas": 0,
+                "vagasVeterano": 20,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
-                "vagasCentral": 10,
+                "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "410",
-                "professores": null,
+                "professores": [
+                    "PEDRO ALBERTO KUNRATH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 622,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 350,
                 "txHorario": "4ABCD ",
                 "horario": [
@@ -2013,22 +2125,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 08:00 às 11:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 19,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "301",
-                "professores": null,
+                "professores": [
+                    "CLAUDIO VICENTE IMMIG"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 633,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 159,
                 "txHorario": "3AB 5CD ",
                 "horario": [
@@ -2044,22 +2161,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 08:00 às 09:40 e Quinta-feira, das 09:50 às 11:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 2,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "503",
-                "professores": null,
+                "professores": [
+                    "BRUNO ODELIO BIRCK"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 621,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 357,
                 "txHorario": "3LM 5LM ",
                 "horario": [
@@ -2071,26 +2193,37 @@ const LISTA = [
                 "tipo": "",
                 "txDescricaoTipo": "Pres",
                 "txTurmaCurriculo": [
-                    "1311-PSICOLOGIA"
+                    "1303-PSICOLOGIA",
+                    "1306-PSICOLOGIA",
+                    "1308-PSICOLOGIA",
+                    "1310-PSICOLOGIA",
+                    "1311-PSICOLOGIA",
+                    "1305-PSICOLOGIA - NOITE",
+                    "1307-PSICOLOGIA - NOITE"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00 e Quinta-feira, das 19:30 às 21:00",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 19,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "304",
-                "professores": null,
+                "professores": [
+                    "BRUNO ODELIO BIRCK"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 632,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 168,
                 "txHorario": "2LM 4NP ",
                 "horario": [
@@ -2133,23 +2266,28 @@ const LISTA = [
                     "4624-SISTEMAS DE INFORMAÇÃO"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 19,
+                "vagasVeterano": 19,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "412",
-                "professores": null,
+                "professores": [
+                    "LUIS EVANDRO HINRICHSEN"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 631,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 169,
                 "txHorario": "3CD 5AB ",
                 "horario": [
@@ -2165,22 +2303,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 09:50 às 11:30 e Quinta-feira, das 08:00 às 09:40",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 0,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "504",
-                "professores": null,
+                "professores": [
+                    "BRUNO ODELIO BIRCK"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 628,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 240,
                 "txHorario": "6ABCD ",
                 "horario": [
@@ -2197,22 +2340,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 08:00 às 11:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 46,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "80A",
+                "txJustificativa": null,
                 "nrSala": "302",
-                "professores": null,
+                "professores": [
+                    "BLASIO GUIDO JACOBI"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 630,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 179,
                 "txHorario": "3NP 5LM ",
                 "horario": [
@@ -2228,22 +2376,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 21:15 às 22:45 e Quinta-feira, das 19:30 às 21:00",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 25,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "703",
-                "professores": null,
+                "professores": [
+                    "IR. EDISON HUTTNER"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 614,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 568,
                 "txHorario": "5LMNP ",
                 "horario": [
@@ -2263,23 +2416,28 @@ const LISTA = [
                     "2555-CIÊNCIAS ECONÔMICAS - LF ECONOMIA"
                 ],
                 "txHorarioExtenso": "Quinta-feira, das 19:30 às 22:45",
-                "vagas": 10,
-                "vagasVeterano": 50,
+                "vagas": 0,
+                "vagasVeterano": 32,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
-                "vagasCentral": 10,
+                "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "807",
-                "professores": null,
+                "professores": [
+                    "BLASIO GUIDO JACOBI"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 613,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 569,
                 "txHorario": "3LMNP ",
                 "horario": [
@@ -2299,23 +2457,28 @@ const LISTA = [
                     "2555-CIÊNCIAS ECONÔMICAS - LF ECONOMIA"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 22:45",
-                "vagas": 10,
-                "vagasVeterano": 50,
+                "vagas": 0,
+                "vagasVeterano": 17,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
-                "vagasCentral": 10,
+                "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "711",
-                "professores": null,
+                "professores": [
+                    "ISIDORO MAZZAROLO"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 627,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 249,
                 "txHorario": "3EE1 5EE1 ",
                 "horario": [
@@ -2351,22 +2514,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 11:35 às  e Quinta-feira, das 11:35 às ",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 8,
                 "vagasBixo": 0,
-                "vagasExtra": 0,
+                "vagasExtra": 4,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "07A",
+                "txJustificativa": null,
                 "nrSala": "303",
-                "professores": null,
+                "professores": [
+                    "WILMAR LUIZ BARTH"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 642,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 380,
                 "txHorario": "4FGHI ",
                 "horario": [
@@ -2382,22 +2550,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 14:00 às 17:30",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 15,
                 "vagasBixo": 0,
-                "vagasExtra": 0,
+                "vagasExtra": 10,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "413",
-                "professores": null,
+                "professores": [
+                    "BLASIO GUIDO JACOBI"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 629,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 189,
                 "txHorario": "3LM 5NP ",
                 "horario": [
@@ -2413,22 +2586,27 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00 e Quinta-feira, das 21:15 às 22:45",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 21,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "503",
-                "professores": null,
+                "professores": [
+                    "IR. EDISON HUTTNER"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 640,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 125,
                 "txHorario": "6LMNP ",
                 "horario": [
@@ -2448,23 +2626,28 @@ const LISTA = [
                     "2555-CIÊNCIAS ECONÔMICAS - LF ECONOMIA"
                 ],
                 "txHorarioExtenso": "Sexta-feira, das 19:30 às 22:45",
-                "vagas": 10,
-                "vagasVeterano": 50,
+                "vagas": 0,
+                "vagasVeterano": 30,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
-                "vagasCentral": 10,
+                "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "50A",
+                "txJustificativa": null,
                 "nrSala": "602",
-                "professores": null,
+                "professores": [
+                    "CARLOS GUSTAVO HAAS"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 13451,
                 "idTurmaAluno": 0,
                 "idTurma": 639,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 126,
                 "txHorario": "4LM 5LM ",
                 "horario": [
@@ -2480,16 +2663,20 @@ const LISTA = [
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 19:30 às 21:00 e Quinta-feira, das 19:30 às 21:00",
                 "vagas": 0,
-                "vagasVeterano": 60,
+                "vagasVeterano": 46,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "11A",
+                "txJustificativa": null,
                 "nrSala": "202",
-                "professores": null,
+                "professores": [
+                    "ELIANA AVILA DA SILVEIRA"
+                ],
                 "tpVaga": "C",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2521,9 +2708,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 10630,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 40267,
                 "idTurma": 493,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 480,
                 "txHorario": "2NP ",
                 "horario": [
@@ -2536,17 +2724,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 21:15 às 22:45",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 14,
+                "vagasVeterano": 14,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "307",
-                "professores": null,
+                "professores": [
+                    "MARLON LEANDRO MORAES"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2581,6 +2773,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 720,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "2LM ",
                 "horario": [
@@ -2594,17 +2787,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 14,
+                "vagasVeterano": 14,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30C",
+                "txJustificativa": null,
                 "nrSala": "307",
-                "professores": null,
+                "professores": [
+                    "JOSE ROGERIO NAVAJAS F. JUNIOR"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2639,6 +2836,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 194,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "5LM ",
                 "horario": [
@@ -2652,17 +2850,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quinta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 26,
+                "vagasVeterano": 26,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30C",
+                "txJustificativa": null,
                 "nrSala": "301",
-                "professores": null,
+                "professores": [
+                    "JOSE ROGERIO NAVAJAS F. JUNIOR"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2694,9 +2896,10 @@ const LISTA = [
         "turmas": [
             {
                 "cdDisciplina": 6480,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 40266,
                 "idTurma": 1542,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 460,
                 "txHorario": "2JK 5LM ",
                 "horario": [
@@ -2711,17 +2914,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29 e Quinta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 31,
+                "vagasVeterano": 31,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "203",
-                "professores": null,
+                "professores": [
+                    "SERGIO BOSCATO GARCIA"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2741,7 +2948,7 @@ const LISTA = [
         "txCursado": null,
         "txPlanejado": null,
         "txCorequisito": null,
-        "cdCoRequisito": 10606,
+        "cdCoRequisito": null,
         "disciplinasPreRequisito": "",
         "disciplinasSubstitutas": "\n4480K-06 - Fenomenos de Transporte I\n44295-04 - Mecânica dos Fluidos\n4444N-04 - Fenômenos de Transporte - Eca",
         "disciplinasCoRequisitos": "",
@@ -2756,6 +2963,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 1713,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 390,
                 "txHorario": "2JK 4NP ",
                 "horario": [
@@ -2770,23 +2978,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 17:35 às 19:29 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 20,
-                "vagasVeterano": 20,
+                "vagas": 11,
+                "vagasVeterano": 11,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30F",
+                "txJustificativa": null,
                 "nrSala": "114",
-                "professores": null,
+                "professores": [
+                    "GERTI WEBER BRUN"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 6712,
-                "idTurmaAluno": 0,
+                "idTurmaAluno": 40271,
                 "idTurma": 1714,
-                "stMatricula": null,
+                "stMatricula": "M",
+                "cdVinculacao": null,
                 "codigo": 380,
                 "txHorario": "2LM 4NP ",
                 "horario": [
@@ -2801,17 +3014,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 19:30 às 21:00 e Quarta-feira, das 21:15 às 22:45",
-                "vagas": 20,
-                "vagasVeterano": 20,
+                "vagas": 0,
+                "vagasVeterano": 0,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
-                "incluido": null,
+                "incluido": true,
                 "nrPredio": "30F",
+                "txJustificativa": null,
                 "nrSala": "114",
-                "professores": null,
+                "professores": [
+                    "GERTI WEBER BRUN"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2846,6 +3063,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 199,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "3LM 4LM ",
                 "horario": [
@@ -2861,23 +3079,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00 e Quarta-feira, das 19:30 às 21:00",
-                "vagas": 20,
-                "vagasVeterano": 20,
+                "vagas": 13,
+                "vagasVeterano": 13,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30B",
+                "txJustificativa": null,
                 "nrSala": "202",
-                "professores": null,
+                "professores": [
+                    "JOSE ROGERIO NAVAJAS F. JUNIOR"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 6713,
                 "idTurmaAluno": 0,
                 "idTurma": 197,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 470,
                 "txHorario": "3LM 5NP ",
                 "horario": [
@@ -2893,23 +3116,28 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Terça-feira, das 19:30 às 21:00 e Quinta-feira, das 21:15 às 22:45",
-                "vagas": 20,
-                "vagasVeterano": 20,
+                "vagas": 13,
+                "vagasVeterano": 13,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30B",
+                "txJustificativa": null,
                 "nrSala": "202",
-                "professores": null,
+                "professores": [
+                    "JOSE ROGERIO NAVAJAS F. JUNIOR"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             },
             {
                 "cdDisciplina": 6713,
                 "idTurmaAluno": 0,
                 "idTurma": 198,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 380,
                 "txHorario": "2NP 3LM ",
                 "horario": [
@@ -2925,17 +3153,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Segunda-feira, das 21:15 às 22:45 e Terça-feira, das 19:30 às 21:00",
-                "vagas": 20,
-                "vagasVeterano": 20,
+                "vagas": 5,
+                "vagasVeterano": 5,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30F",
+                "txJustificativa": null,
                 "nrSala": "112",
-                "professores": null,
+                "professores": [
+                    "JOSE ROGERIO NAVAJAS F. JUNIOR"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     },
@@ -2971,6 +3203,7 @@ const LISTA = [
                 "idTurmaAluno": 0,
                 "idTurma": 580,
                 "stMatricula": null,
+                "cdVinculacao": null,
                 "codigo": 370,
                 "txHorario": "4LM 5LM ",
                 "horario": [
@@ -2986,17 +3219,21 @@ const LISTA = [
                     "4452-ENGENHARIA MECÂNICA"
                 ],
                 "txHorarioExtenso": "Quarta-feira, das 19:30 às 21:00 e Quinta-feira, das 19:30 às 21:00",
-                "vagas": 60,
-                "vagasVeterano": 60,
+                "vagas": 8,
+                "vagasVeterano": 8,
                 "vagasBixo": 0,
                 "vagasExtra": 0,
                 "vagasCentral": 0,
                 "incluido": null,
                 "nrPredio": "30D",
+                "txJustificativa": null,
                 "nrSala": "201",
-                "professores": null,
+                "professores": [
+                    "KARINA RUSCHEL"
+                ],
                 "tpVaga": "V",
-                "tpTurma": "N"
+                "tpTurma": "N",
+                "listCurso": null
             }
         ]
     }

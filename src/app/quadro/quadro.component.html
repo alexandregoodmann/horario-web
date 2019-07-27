@@ -22,19 +22,22 @@
       <td *ngFor="let aula of periodo.aulas; let i = index">
         <div *ngIf="aula !== undfined" [class]="getClass(aula)">
           <strong>
-            <span>{{aula.sgCodCred}} | N{{aula.nivel}}</span>
+            <span>{{aula.sgCodicred}} | N{{aula.cdNivel}}</span>
           </strong>
           <br>
           <span>{{aula.nmDisciplina}}</span>
           <br>
           <clr-icon shape="trash" (click)="remover(quadro, aula)"></clr-icon>
         </div>
+        
+        <!-- BALAO DE SUGESTAO -->
         <clr-signpost *ngIf="aula === undfined" (click)="sugestao(quadro, i, periodo.periodo)">
           <clr-icon shape="tasks" clrSignpostTrigger></clr-icon>
           <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
-            <li *ngFor="let s of sugestoes">{{s}}</li>
+            <li *ngFor="let s of sugestoes">{{s}}</li> 
           </clr-signpost-content>
         </clr-signpost>
+
       </td>
     </tr>
   </tbody>
