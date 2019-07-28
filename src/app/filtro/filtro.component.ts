@@ -30,7 +30,7 @@ export class FiltroComponent implements OnInit {
       });
     } else {
       vet.forEach(v => {
-        let i = this.filtroPeriodo.indexOf(v);
+        let i = this.filtroPeriodo.indexOf(v); 
         this.filtroPeriodo.splice(i, 1);
       });
     }
