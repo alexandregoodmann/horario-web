@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Disciplina } from '../model/disciplina';
+import { Nivel } from '../model/nivel';
 import { NivelService } from '../service/nivel.service';
 
 @Component({
@@ -9,17 +10,25 @@ import { NivelService } from '../service/nivel.service';
 })
 export class CurriculoComponent implements OnInit {
 
-  mapa: Map<number, Array<any>> = new Map<number, Array<any>>();
+  niveis: Nivel[] = [];
+  cursados: number = 0;
+  creditos: number = 0;
 
   constructor(
     private nivelService: NivelService
   ) { }
 
   ngOnInit() {
-    this.mapa = this.nivelService.getCurriculo();
+    this.niveis = this.nivelService.getNiveis();
+    this.niveis.forEach(n => {
+      this.creditos = this.creditos + n.creditos;
+      this.cursados = this.cursados + n.cursados;
+    });
+    console.log(this.niveis);
   }
 
   requisitos(di: Disciplina) {
+    /*
     di.clazz = di.clazz + ' selecionado';
     let dependencias = this.nivelService.getDependencias(di.sgCodicred);
     dependencias.forEach(dep => {
@@ -30,6 +39,7 @@ export class CurriculoComponent implements OnInit {
         }
       });
     });
+    */
   }
 
 

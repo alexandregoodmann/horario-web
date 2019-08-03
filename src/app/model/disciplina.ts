@@ -10,4 +10,5 @@ export class Disciplina {
     turmas: any[];
     clazz: string;
     stStatus: string;
+    cursada: boolean;
 }

@@ -1,12 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Disciplina } from '../model/disciplina';
+import { Nivel } from '../model/nivel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NivelService {
 
-  getCurriculo() {
+  getNiveis() {
+    let mapa = this.getCurriculo();
+    let niveis: Nivel[] = [];
+    mapa.forEach((v, k) => {
+      let nivel = new Nivel();
+      nivel.disciplinas = v;
+      
+      let total: number = 0;
+      let cursados: number = 0;
+      nivel.disciplinas.forEach(d => {
+        let s = parseInt(d.sgCodicred.substring(6));
+        total = total + s;
+        if (d.cursada){
+          cursados = cursados + s;
+        }
+      });
+      nivel.cursados = cursados;
+      nivel.creditos = total;
+      niveis.push(nivel);
+    });
+    return niveis;
+  }
+
+  private getCurriculo() {
     let mapa: Map<number, Array<Disciplina>> = new Map<number, Array<Disciplina>>();
     for (let i = 1; i <= 10; i++) {
       mapa.set(i, CURRICULO[i]);
@@ -21,14 +45,11 @@ export class NivelService {
     return mapa;
   }
 
-  getPercurso() {
-    return PERCURSO;
-  }
-
   private setClass(disc: Disciplina): void {
     let clazz = 'list-group-item';
     if (disc.stStatus === 'CURSADA') {
       clazz = clazz + ' cursado';
+      disc.cursada = true;
     } else {
       clazz = clazz + ' pendente';
     }
