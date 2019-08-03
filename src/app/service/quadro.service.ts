@@ -69,23 +69,24 @@ export class QuadroService {
 
         lista.forEach(disciplina => {
             if (cadeiras.includes(disciplina.sgCodicred)) {
-                
-            disciplina.turmas.forEach(t => {
-                    let add: boolean = false;
-                    t.horario.forEach(h => {
-                        if (periodos.includes(h.substring(1))) {
-                            add = true;
+                disciplina.turmas.forEach(t => {
+                    if (t.vagas>0){
+                        let add: boolean = false;
+                        t.horario.forEach(h => {
+                            if (periodos.includes(h.substring(1))) {
+                                add = true;
+                            }
+                        });
+                        if (add) {
+                            let aula = new Disciplina();
+                            aula.codigoTurma = t.codigo;
+                            aula.horarios = t.horario;
+                            aula.nmDisciplina = disciplina.nmNome;
+                            aula.sgCodicred = disciplina.sgCodicred;
+                            aula.vagas = t.vagas;
+                            aula.cdNivel = disciplina.cdNivel;
+                            this.origem.push(aula);
                         }
-                    });
-                    if (add) {
-                        let aula = new Disciplina();
-                        aula.codigoTurma = t.codigo;
-                        aula.horarios = t.horario;
-                        aula.nmDisciplina = disciplina.nmNome;
-                        aula.sgCodicred = disciplina.sgCodicred;
-                        aula.vagas = t.vagas;
-                        aula.cdNivel = disciplina.cdNivel;
-                        this.origem.push(aula);
                     }
                 });
             }
@@ -164,7 +165,7 @@ export class QuadroService {
     }
 
     setAulas(quadro: Quadro, aula: Disciplina): void {
-        if (aula.horarios === undefined){
+        if (aula.horarios === undefined) {
             aula.horarios = aula.turmas[0].horario;
         }
         aula.horarios.forEach(h => {
@@ -178,6 +179,7 @@ export class QuadroService {
                 periodo.aulas[pos] = aula;
             }
         });
+        quadro.disciplinas.set(aula.sgCodicred, aula);
     }
 
     todasLivres(quadro: Quadro, horarios: string[]): boolean {
@@ -198,7 +200,7 @@ export class QuadroService {
         return livre;
     }
 
-    private calcularTotal(quadro: Quadro) {
+    calcularTotal(quadro: Quadro) {
         let total: number = 0;
         quadro.disciplinas.forEach((v, k) => {
             total = total + Number.parseInt(k.substring(k.length - 2));

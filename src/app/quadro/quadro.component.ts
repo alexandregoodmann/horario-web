@@ -62,10 +62,13 @@ export class QuadroComponent implements OnInit {
       let per = h.substring(1);
       quadro.getPeriodo(per).aulas[dia - 2] = undefined;
     });
+    quadro.disciplinas.delete(aula.sgCodicred);
+    this.quadroService.calcularTotal(quadro);
   }
 
   add(quadro: Quadro, aula: Disciplina) {
-    this.quadroService.setAulas(quadro, aula)
+    this.quadroService.setAulas(quadro, aula);
+    this.quadroService.calcularTotal(quadro);
   }
-  
+
 }
