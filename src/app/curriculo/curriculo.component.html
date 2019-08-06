@@ -1,11 +1,23 @@
-<div class="card">
-    <div class="card-header">
-        <span>Resumo</span>
+<div class="clr-row">
+    <div class="card clr-col-3">
+        <div class="card-header">
+            <span>Cursado</span>
+        </div>
+        <div class="card-block">
+            <strong>{{cursados}} | {{creditos}}</strong> - Créditos
+            <br>
+            <strong>{{(cursados/creditos) * 100 | number: '1.2-2'}}%</strong>
+        </div>
     </div>
-    <div class="card-block">
-        <strong>{{cursados}} | {{creditos}}</strong> - Créditos cursados
-        <br>
-        <strong>{{(cursados/creditos) * 100 | number: '1.2-2'}}%</strong> - Cursado
+    <div class="card clr-col-3">
+        <div class="card-header">
+            <span>Restante</span>
+        </div>
+        <div class="card-block">
+            <strong>{{creditos - cursados}}</strong> - Créditos
+            <br>
+            <strong>{{((creditos - cursados)/creditos) * 100 | number: '1.2-2'}}%</strong>
+        </div>
     </div>
 </div>
 
