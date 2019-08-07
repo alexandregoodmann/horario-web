@@ -69,7 +69,6 @@ export class QuadroService {
 
         lista.forEach(disciplina => {
             if (cadeiras.includes(disciplina.sgCodicred)) {
-                
                 disciplina.turmas.forEach(t => {
                     if (t.vagas>0){
                         let add: boolean = false;

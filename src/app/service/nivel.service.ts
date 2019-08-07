@@ -71,7 +71,7 @@ export class NivelService {
               if (codcred !== '') {
                 ret.push(this.getDisciplinaCurriculo(codcred));
               }
-            })
+            });
           }
         }
       });
@@ -618,7 +618,7 @@ const CURRICULO =
       "tipoDisciplina": null,
       "idTipoDisciplina": null,
       "nrCreditosPre": null,
-      "stStatus": "LIBERADA",
+      "stStatus": "CURSADA",
       "txCursado": null,
       "txPlanejado": "2020/1",
       "txCorequisito": null,
@@ -2513,7 +2513,7 @@ const CURRICULO =
       "tipoDisciplina": null,
       "idTipoDisciplina": null,
       "nrCreditosPre": null,
-      "stStatus": "PENDENTE",
+      "stStatus": "CURSADA",
       "txCursado": null,
       "txPlanejado": "2021/2",
       "txCorequisito": null,

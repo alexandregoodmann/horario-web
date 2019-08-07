@@ -24,22 +24,19 @@ export class CurriculoComponent implements OnInit {
       this.creditos = this.creditos + n.creditos;
       this.cursados = this.cursados + n.cursados;
     });
-    console.log(this.niveis);
   }
 
   requisitos(di: Disciplina) {
-    /*
     di.clazz = di.clazz + ' selecionado';
     let dependencias = this.nivelService.getDependencias(di.sgCodicred);
     dependencias.forEach(dep => {
-      let nivel = this.mapa.get(dep.cdNivel);
-      nivel.forEach(disciplina => {
+      let nivel = this.niveis[dep.cdNivel - 1];
+      nivel.disciplinas.forEach(disciplina => {
         if (dep.sgCodicred === disciplina.sgCodicred) {
           disciplina.clazz = disciplina.clazz + ' marcado'
         }
       });
     });
-    */
   }
 
 
