@@ -69,26 +69,28 @@ export class QuadroService {
 
         lista.forEach(disciplina => {
             if (cadeiras.includes(disciplina.sgCodicred)) {
-                disciplina.turmas.forEach(t => {
-                    if (t.vagas>0){
-                        let add: boolean = false;
-                        t.horario.forEach(h => {
-                            if (periodos.includes(h.substring(1))) {
-                                add = true;
+                if (disciplina.turmas){
+                    disciplina.turmas.forEach(t => {
+                        if (t.vagas>0){
+                            let add: boolean = false;
+                            t.horario.forEach(h => {
+                                if (periodos.includes(h.substring(1))) {
+                                    add = true;
+                                }
+                            });
+                            if (add) {
+                                let aula = new Disciplina();
+                                aula.codigoTurma = t.codigo;
+                                aula.horarios = t.horario;
+                                aula.nmDisciplina = disciplina.nmNome;
+                                aula.sgCodicred = disciplina.sgCodicred;
+                                aula.vagas = t.vagas;
+                                aula.cdNivel = disciplina.cdNivel;
+                                this.origem.push(aula);
                             }
-                        });
-                        if (add) {
-                            let aula = new Disciplina();
-                            aula.codigoTurma = t.codigo;
-                            aula.horarios = t.horario;
-                            aula.nmDisciplina = disciplina.nmNome;
-                            aula.sgCodicred = disciplina.sgCodicred;
-                            aula.vagas = t.vagas;
-                            aula.cdNivel = disciplina.cdNivel;
-                            this.origem.push(aula);
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
