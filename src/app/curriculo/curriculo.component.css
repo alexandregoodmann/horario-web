@@ -1,18 +1,8 @@
 .cursado {
-    color: rgb(184, 181, 181);
-    text-decoration:line-through;
-    font-size: .541667rem;
+    text-decoration: line-through;
+    color: rgb(170, 168, 168);
 }
 
 .pendente {
-    color: rgb(65, 65, 65);
-    font-size: .541667rem;
-}
-
-.marcado{
-    background-color: antiquewhite;
-}
-
-.selecionado{
-    background-color: cadetblue;
+    font-weight: bold;
 }

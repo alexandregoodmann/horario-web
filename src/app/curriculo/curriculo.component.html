@@ -1,37 +1,22 @@
 <div class="clr-row">
-    <div class="card clr-col-3">
-        <div class="card-header">
-            <span>Cursado</span>
-        </div>
-        <div class="card-block">
-            <strong>{{cursados}} | {{creditos}}</strong> - Créditos
-            <br>
-            <strong>{{(cursados/creditos) * 100 | number: '1.2-2'}}%</strong>
-        </div>
-    </div>
-    <div class="card clr-col-3">
-        <div class="card-header">
-            <span>Restante</span>
-        </div>
-        <div class="card-block">
-            <strong>{{creditos - cursados}}</strong> - Créditos
-            <br>
-            <strong>{{((creditos - cursados)/creditos) * 100 | number: '1.2-2'}}%</strong>
+    <div class="card clr-col-2">
+        <div class="card-block" style="display: grid;">
+            <span>Disciplinas: {{disciplinas}}</span>
+            <span>Cursadas: {{cursadas}}</span>
+            <span>Cursado: {{cursado * 100 | number: '1.2-2'}}%</span>
         </div>
     </div>
 </div>
 
 <div class="clr-row" style="width: 100%">
-    <div *ngFor="let nivel of niveis; let i = index" class="clr-col-3 card">
+    <div *ngFor="let nivel of niveis; let i = index" class="clr-col-2 card" style="margin: 5px;">
         <div class="card-block">
             <h4 class="card-title">Nível {{i+1}}</h4>
-            <span><strong>{{nivel.cursados}} | {{nivel.creditos}}</strong> - Créditos</span>
         </div>
         <div *ngFor="let disc of nivel.disciplinas" class="list-group">
-            <div [class]="disc.clazz">
-                <strong>{{disc.sgCodicred}}</strong> - {{disc.nmNome}}
-                <clr-icon shape="child-arrow" (click)="requisitos(disc)"></clr-icon>
-            </div>
+            <span [ngClass]="{'cursado' : disc.situacao == 'CURSADO', 'pendente':disc.situacao == 'PENDENTE'}">
+                - {{disc.disciplina}}
+            </span>
         </div>
     </div>
 </div>
