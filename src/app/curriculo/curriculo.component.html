@@ -3,6 +3,7 @@
         <div class="card-block" style="display: grid;">
             <span>Disciplinas: {{disciplinas}}</span>
             <span>Cursadas: {{cursadas}}</span>
+            <span>Pendentes: {{disciplinas - cursadas}}</span>
             <span>Cursado: {{cursado * 100 | number: '1.2-2'}}%</span>
         </div>
     </div>
@@ -17,6 +18,8 @@
             <span [ngClass]="{'cursado' : disc.situacao == 'CURSADO', 'pendente':disc.situacao == 'PENDENTE'}">
                 - {{disc.disciplina}}
             </span>
+            <span *ngIf="disc.status==='MATRICULADO'" class="badge badge-2">MATRICULADO</span>
+            <span *ngIf="disc.status==='DISPENSA'" class="badge">DISPENSA</span>
         </div>
     </div>
 </div>
