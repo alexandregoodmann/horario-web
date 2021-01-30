@@ -15,11 +15,11 @@
             <h4 class="card-title">Nível {{i+1}}</h4>
         </div>
         <div *ngFor="let disc of nivel.disciplinas" class="list-group">
-            <span [ngClass]="{'cursado' : disc.situacao == 'CURSADO', 'pendente':disc.situacao == 'PENDENTE'}">
+            <span [ngClass]="{'pendente' : disc.situacao != 'CURSADO', 'cursado' : disc.situacao == 'CURSADO'}">
                 - {{disc.disciplina}}
             </span>
-            <span *ngIf="disc.status==='MATRICULADO'" class="badge badge-2">MATRICULADO</span>
-            <span *ngIf="disc.status==='DISPENSA'" class="badge">DISPENSA</span>
+            <span *ngIf="disc.situacao == 'MATRICULADO'" class="badge badge-2">MATRICULADO</span>
+            <span *ngIf="disc.situacao == 'DISPENSA'" class="badge">DISPENSA</span>
         </div>
     </div>
 </div>

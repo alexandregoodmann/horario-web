@@ -4,5 +4,4 @@ export class Disciplina {
     codigo: string;
     disciplina: string;
     situacao: string;
-    status: string;
 }

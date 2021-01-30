@@ -1,8 +1,9 @@
+.pendente {
+    font-weight: bold;
+}
+
 .cursado {
     text-decoration: line-through;
     color: rgb(170, 168, 168);
-}
-
-.pendente {
-    font-weight: bold;
+    font-weight: normal;
 }

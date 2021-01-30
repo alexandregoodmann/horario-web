@@ -28,7 +28,6 @@ export class NivelService {
     dis.codigo = obj.CODIGO;
     dis.disciplina = obj.DISCIPLINA;
     dis.situacao = obj.SITUACAO;
-    dis.status = obj.status;
     return dis;
   }
 
@@ -96,8 +95,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM1830",
       "DISCIPLINA": "CRIATIVIDADE, IDEAÇÃO E RESOLUÇÃO DE PROBLEMAS",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      status: "DISPENSA"
+      "SITUACAO": "DISPENSA"
     },
     {
       "SEMESTRE": "2",
@@ -153,8 +151,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM1836",
       "DISCIPLINA": "ESTATÍSTICA APLICADA AO DATA SCIENCE",
       "CH": "88",
-      "SITUACAO": "PENDENTE",
-      status: "DISPENSA"
+      "SITUACAO": "DISPENSA"
     },
     {
       "SEMESTRE": "3",
@@ -196,7 +193,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0435",
       "DISCIPLINA": "FENOMENOS DE TRANSPORTE",
       "CH": "33",
-      "SITUACAO": "PENDENTE"
+      "SITUACAO": "MATRICULADO"
     },
     {
       "SEMESTRE": "4",
@@ -224,7 +221,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0957",
       "DISCIPLINA": "SELECAO DE MATERIAIS MECANICOS",
       "CH": "33",
-      "SITUACAO": "PENDENTE"
+      "SITUACAO": "CURSADO"
     },
     {
       "SEMESTRE": "5",
@@ -252,8 +249,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0827",
       "DISCIPLINA": "PROCESSOS DE CONFORMACAO MECANICA",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      "status": "MATRICULADO"
+      "SITUACAO": "MATRICULADO",
     },
     {
       "SEMESTRE": "5",
@@ -274,8 +270,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0326",
       "DISCIPLINA": "ELEMENTOS DE MAQUINAS",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      "status": "MATRICULADO",
+      "SITUACAO": "MATRICULADO"
     },
     {
       "SEMESTRE": "6",
@@ -324,8 +319,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0987",
       "DISCIPLINA": "SISTEMAS HIDRAULICOS E PNEUMATICOS",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      "status": "MATRICULADO"
+      "SITUACAO": "MATRICULADO"
     },
     {
       "SEMESTRE": "8",
@@ -374,8 +368,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM1849",
       "DISCIPLINA": "ESTÁGIO SUPERVISIONADO EM ENGENHARIA",
       "CH": "180",
-      "SITUACAO": "PENDENTE",
-      "status": "MATRICULADO"
+      "SITUACAO": "MATRICULADO"
     },
     {
       "SEMESTRE": "9",
@@ -389,23 +382,21 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0744",
       "DISCIPLINA": "OPTATIVA I",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      status: "DISPENSA"
+      "SITUACAO": "CURSADO"
     },
     {
       "SEMESTRE": "9",
       "CODIGO": "AIM0865",
       "DISCIPLINA": "PROJETO DE MECANISMO",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      "status": "MATRICULADO"
+      "SITUACAO": "MATRICULADO"
     },
     {
       "SEMESTRE": "9",
       "CODIGO": "AIM1848",
       "DISCIPLINA": "PROJETO FINAL DE CURSO EM ENGENHARIA",
       "CH": "132",
-      "SITUACAO": "PENDENTE"
+      "SITUACAO": "MATRICULADO"
     },
     {
       "SEMESTRE": "10",
@@ -419,8 +410,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0748",
       "DISCIPLINA": "OPTATIVA II",
       "CH": "66",
-      "SITUACAO": "PENDENTE",
-      status: "DISPENSA"
+      "SITUACAO": "DISPENSA"
     },
     {
       "SEMESTRE": "10",
@@ -434,17 +424,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0000",
       "DISCIPLINA": "ATIVIDADES COMPLEMENTARES",
       "CH": "255",
-      "SITUACAO": "PENDENTE",
-      "status": "MATRICULADO"
-    },
-    {
-      "SEMESTRE": "10",
-      "CODIGO": "SIM1350",
-      "DISCIPLINA": "	INTERNET DAS COISAS",
-      "CH": "66",
-      "SITUACAO": "PENDENTE",
-      status: "DISPENSA"
+      "SITUACAO": "MATRICULADO"
     }
- 
   ]
 }
