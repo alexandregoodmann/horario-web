@@ -95,7 +95,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM1830",
       "DISCIPLINA": "CRIATIVIDADE, IDEAÇÃO E RESOLUÇÃO DE PROBLEMAS",
       "CH": "66",
-      "SITUACAO": "DISPENSA"
+      "SITUACAO": "CURSADO"
     },
     {
       "SEMESTRE": "2",
@@ -410,7 +410,7 @@ const CURRICULO_RITTER = {
       "CODIGO": "AIM0748",
       "DISCIPLINA": "OPTATIVA II",
       "CH": "66",
-      "SITUACAO": "DISPENSA"
+      "SITUACAO": "CURSADO"
     },
     {
       "SEMESTRE": "10",
